@@ -1,12 +1,18 @@
 package whois
 
+import "context"
 import "fmt"
 import "io/ioutil"
 import "net"
+import "time"
 
 var UnidentifiedTLD error = fmt.Errorf("UnidentifiedTLD")
 
 func Whois(domain string)(string, error) {
+	return WhoisContext(context.Background(), domain)
+}
+
+func WhoisContext(ctx context.Context, domain string)(string, error) {
 	var s *suffix_elt
 	var l int
 	var srv []string
@@ -15,6 +21,8 @@ func Whois(domain string)(string, error) {
 	var conn net.Conn
 	var err error
 	var d []byte
+	var deadline time.Time
+	var dialer = &net.Dialer{}
 
 	/* Choose server according with request */
 	l = len(domain)
@@ -40,11 +48,20 @@ func Whois(domain string)(string, error) {
 	}
 
 	/* connect to server */
-	conn, err = net.Dial("tcp", srv[0] + ":43")
+	conn, err = dialer.DialContext(ctx, "tcp", srv[0] + ":43")
 	if err != nil {
 		return "", err
 	}
 	defer conn.Close()
+
+	/* Set deadline */
+	deadline, ok = ctx.Deadline()
+	if ok {
+		err = conn.SetDeadline(deadline)
+		if err != nil {
+			return "", err
+		}
+	}
 
 	/* perform request */
 	_, err = conn.Write([]byte(query + "\r\n"))
