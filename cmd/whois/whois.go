@@ -33,5 +33,9 @@ func main() {
 		os.Exit(1)
 	}
 
-	os.Stdout.Write([]byte(res))
+	if res == "" {
+		os.Stdout.Write([]byte("not found\n"))
+	} else {
+		os.Stdout.Write([]byte(res))
+	}
 }
