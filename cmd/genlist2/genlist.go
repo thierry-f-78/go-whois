@@ -123,6 +123,8 @@ func main() {
 			s.Regex = `\QNo Data Found\E`
 		case ".web.com":
 			s.Regex = `\QDOMAIN NOT FOUND\E`
+		case ".ai":
+			s.Regex = `\QNo Object Found\E`
 		}
 
 		/* index entry */
