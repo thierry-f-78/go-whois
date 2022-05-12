@@ -2,6 +2,7 @@ package main
 
 import "context"
 import "flag"
+import "net"
 import "os"
 import "time"
 
@@ -12,6 +13,7 @@ func main() {
 	var res string
 	var err error
 	var ctx context.Context
+	var dialer *net.Dialer
 
 	flag.StringVar(&domain, "d", "", "domain")
 	flag.Parse()
@@ -23,7 +25,9 @@ func main() {
 
 	ctx, _ = context.WithTimeout(context.Background(), 1000 * time.Millisecond)
 
-	res, err = whois.WhoisContext(ctx, domain)
+	dialer = &net.Dialer{}
+
+	res, err = whois.WhoisContextDialer(ctx, dialer, domain)
 	if err != nil {
 		println(err.Error())
 		os.Exit(1)

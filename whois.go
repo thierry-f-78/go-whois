@@ -13,6 +13,10 @@ func Whois(domain string)(string, error) {
 }
 
 func WhoisContext(ctx context.Context, domain string)(string, error) {
+	return WhoisContextDialer(ctx, &net.Dialer{}, domain)
+}
+
+func WhoisContextDialer(ctx context.Context, dialer *net.Dialer, domain string)(string, error) {
 	var s *suffix_elt
 	var l int
 	var srv []string
@@ -22,7 +26,6 @@ func WhoisContext(ctx context.Context, domain string)(string, error) {
 	var err error
 	var d []byte
 	var deadline time.Time
-	var dialer = &net.Dialer{}
 
 	/* Choose server according with request */
 	l = len(domain)
