@@ -4,6 +4,7 @@ import "context"
 import "fmt"
 import "io/ioutil"
 import "net"
+import "strings"
 import "time"
 
 var UnidentifiedTLD error = fmt.Errorf("UnidentifiedTLD")
@@ -19,7 +20,7 @@ func WhoisContext(ctx context.Context, domain string)(string, error) {
 func WhoisContextDialer(ctx context.Context, dialer *net.Dialer, domain string)(string, error) {
 	var s *suffix_elt
 	var l int
-	var srv []string
+	var srv *server_elt
 	var ok bool
 	var query string
 	var conn net.Conn
@@ -27,10 +28,12 @@ func WhoisContextDialer(ctx context.Context, dialer *net.Dialer, domain string)(
 	var d []byte
 	var deadline time.Time
 
+	domain = strings.ToLower(domain)
+
 	/* Choose server according with request */
 	l = len(domain)
 	for _, s = range suffix_db {
-		if (l > s.length && domain[l - s.length - 1] == '.') || l == s.length {
+		if l >= s.length {
 			srv, ok = s.suffix[domain[l - s.length:]]
 			if ok {
 				break
@@ -44,14 +47,14 @@ func WhoisContextDialer(ctx context.Context, dialer *net.Dialer, domain string)(
 	}
 
 	/* Build query according with some specific servers */
-	switch srv[0] {
-	case "whois.verisign-grs.com": query = "=" + domain
-	case "whois.denic.de":         query = "-T dn,ace " + domain
-	default:                       query = domain
+	switch srv.kind {
+	case 1:  query = "=" + domain
+	//case "whois.denic.de":         query = "-T dn,ace " + domain
+	default: query = domain
 	}
 
 	/* connect to server */
-	conn, err = dialer.DialContext(ctx, "tcp", srv[0] + ":43")
+	conn, err = dialer.DialContext(ctx, "tcp", srv.name + ":43")
 	if err != nil {
 		return "", err
 	}
@@ -76,6 +79,13 @@ func WhoisContextDialer(ctx context.Context, dialer *net.Dialer, domain string)(
 	d, err = ioutil.ReadAll(conn)
 	if err != nil {
 		return "", err
+	}
+
+	/* Check not found cases */
+	if srv.pattern != nil {
+		if srv.pattern.Match(d) {
+			return "", nil
+		}
 	}
 
 	return string(d), nil

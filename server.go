@@ -1,98 +1,1653 @@
 package whois
 
+import "regexp"
+
 /* File genearted with cmd/genlist. Do not edit */
+
+type server_elt struct {
+	name string
+	kind int /* 0: normal, 1: verisign */
+	pattern *regexp.Regexp
+}
 
 type suffix_elt struct {
 	length int
-	suffix map[string][]string
+	suffix map[string]*server_elt
 }
 var suffix_db []*suffix_elt = []*suffix_elt{
 	{
-		length: 24,
-		suffix: map[string][]string{"chirurgiens-dentistes.fr":[]string{"whois.smallregistry.net"}, "xn--vermgensberatung-pwb":[]string{"whois.ksregistry.net"}},
-	},
-	{
 		length: 23,
-		suffix: map[string][]string{"xn--vermgensberater-ctb":[]string{"whois.ksregistry.net"}},
-	},
-	{
-		length: 22,
-		suffix: map[string][]string{"xn--clchc0ea0b2g2a9gcd":[]string{"whois.sgnic.sg"}},
-	},
-	{
-		length: 21,
-		suffix: map[string][]string{"experts-comptables.fr":[]string{"whois.smallregistry.net"}},
-	},
-	{
-		length: 20,
-		suffix: map[string][]string{"xn--w4r85el8fhu5dnra":[]string{"whois.nic.xn--w4r85el8fhu5dnra"}},
+		suffix: map[string]*server_elt{
+			".xn--clchc0ea0b2g2a9gcd": &server_elt{
+				name: "whois.sgnic.sg",
+				kind: 0,
+				pattern: nil,
+			},
+		},
 	},
 	{
 		length: 18,
-		suffix: map[string][]string{"geometre-expert.fr":[]string{"whois.smallregistry.net"}, "travelersinsurance":[]string{"whois.afilias-srs.net"}},
+		suffix: map[string]*server_elt{
+			".xn--xkc2dl3a5ee0h": &server_elt{
+				name: "whois.registry.in",
+				kind: 0,
+				pattern: nil,
+			},
+			".xn--mgbah1a3hjkrd": &server_elt{
+				name: "whois.nic.mr",
+				kind: 0,
+				pattern: nil,
+			},
+			".xn--mgberp4a5d4ar": &server_elt{
+				name: "whois.nic.net.sa",
+				kind: 0,
+				pattern: nil,
+			},
+		},
 	},
 	{
 		length: 17,
-		suffix: map[string][]string{"xn--3oq18vl8pn36a":[]string{"whois.afilias-srs.net"}, "xn--5su34j936bgsg":[]string{"whois.nic.xn--5su34j936bgsg"}, "xn--mgberp4a5d4ar":[]string{"whois.nic.net.sa"}, "xn--xkc2dl3a5ee0h":[]string{"whois.inregistry.net"}},
+		suffix: map[string]*server_elt{
+			".xn--xkc2al3hye2a": &server_elt{
+				name: "whois.nic.lk",
+				kind: 0,
+				pattern: nil,
+			},
+		},
 	},
 	{
 		length: 16,
-		suffix: map[string][]string{"xn--fzys8d69uvgm":[]string{"whois.afilias-srs.net"}, "xn--mgba7c0bbn0a":[]string{"whois.nic.xn--mgba7c0bbn0a"}},
+		suffix: map[string]*server_elt{
+			".xn--mgba3a4f16a": &server_elt{
+				name: "whois.nic.ir",
+				kind: 0,
+				pattern: nil,
+			},
+			".xn--lgbbat1ad8j": &server_elt{
+				name: "whois.nic.dz",
+				kind: 0,
+				pattern: nil,
+			},
+		},
 	},
 	{
 		length: 15,
-		suffix: map[string][]string{"kerryproperties":[]string{"whois.nic.kerryproperties"}, "sandvikcoromant":[]string{"whois.nic.sandvikcoromant"}, "xn--i1b6b1a6a2e":[]string{"whois.publicinterestregistry.net"}, "xn--kcrx77d1x4a":[]string{"whois.nic.xn--kcrx77d1x4a"}, "xn--lgbbat1ad8j":[]string{"whois.nic.dz"}, "xn--mgba3a4f16a":[]string{"whois.nic.ir"}, "xn--nqv7fs00ema":[]string{"whois.publicinterestregistry.net"}},
+		suffix: map[string]*server_elt{
+			".xn--mgbx4cd0ab": &server_elt{
+				name: "whois.mynic.my",
+				kind: 0,
+				pattern: nil,
+			},
+			".xn--rvc1e0am3e": &server_elt{
+				name: "whois.registry.in",
+				kind: 0,
+				pattern: nil,
+			},
+			".xn--h2breg3eve": &server_elt{
+				name: "whois.registry.in",
+				kind: 0,
+				pattern: nil,
+			},
+			".xn--mgbaam7a8h": &server_elt{
+				name: "whois.aeda.net.ae",
+				kind: 0,
+				pattern: nil,
+			},
+			".xn--mgbbh1a71e": &server_elt{
+				name: "whois.registry.in",
+				kind: 0,
+				pattern: nil,
+			},
+		},
 	},
 	{
 		length: 14,
-		suffix: map[string][]string{"afamilycompany":[]string{"whois.nic.afamilycompany"}, "americanfamily":[]string{"whois.nic.americanfamily"}, "cancerresearch":[]string{"whois.nic.cancerresearch"}, "cookingchannel":[]string{"whois.nic.cookingchannel"}, "kerrylogistics":[]string{"whois.nic.kerrylogistics"}, "lovesnaija.com":[]string{"srs-whois.dns.net.za"}, "veterinaire.fr":[]string{"whois.smallregistry.net"}, "xn--6qq986b3xl":[]string{"whois.gtld.knet.cn"}, "xn--b4w605ferd":[]string{"whois.afilias-srs.net"}, "xn--fiq228c5hs":[]string{"whois.afilias-srs.net", "whois.teleinfo.cn"}, "xn--jlq61u9w7b":[]string{"whois.afilias-srs.net"}, "xn--mgbaam7a8h":[]string{"whois.aeda.net.ae"}, "xn--mgbbh1a71e":[]string{"whois.inregistry.net"}, "xn--mgbca7dzdo":[]string{"whois.afilias-srs.net", "whois.nic.xn--mgbca7dzdo"}},
+		suffix: map[string]*server_elt{
+			".xn--h2brj9c8c": &server_elt{
+				name: "whois.registry.in",
+				kind: 0,
+				pattern: nil,
+			},
+			".xn--yfro4i67o": &server_elt{
+				name: "whois.sgnic.sg",
+				kind: 0,
+				pattern: nil,
+			},
+			".xn--ygbi2ammx": &server_elt{
+				name: "whois.pnina.ps",
+				kind: 0,
+				pattern: nil,
+			},
+			".xn--fpcrj9c3d": &server_elt{
+				name: "whois.registry.in",
+				kind: 0,
+				pattern: nil,
+			},
+			".xn--fzc2c9e2c": &server_elt{
+				name: "whois.nic.lk",
+				kind: 0,
+				pattern: nil,
+			},
+		},
 	},
 	{
 		length: 13,
-		suffix: map[string][]string{"international":[]string{"whois.donuts.co"}, "orientexpress":[]string{"whois.afilias-srs.net"}, "pharmacien.fr":[]string{"whois.smallregistry.net"}, "realestate.pl":[]string{"whois.dns.pl"}, "spreadbetting":[]string{"whois.nic.spreadbetting"}, "travelchannel":[]string{"whois.nic.travelchannel"}, "wolterskluwer":[]string{"whois.afilias-srs.net"}, "xn--fpcrj9c3d":[]string{"whois.inregistry.net"}, "xn--yfro4i67o":[]string{"whois.sgnic.sg"}, "xn--ygbi2ammx":[]string{"whois.pnina.ps"}},
+		suffix: map[string]*server_elt{
+			".xn--mgbgu82a": &server_elt{
+				name: "whois.registry.in",
+				kind: 0,
+				pattern: nil,
+			},
+			".xn--ogbpf8fl": &server_elt{
+				name: "whois.tld.sy",
+				kind: 0,
+				pattern: nil,
+			},
+			".in-addr.arpa": &server_elt{
+				name: "ARPA",
+				kind: 0,
+				pattern: nil,
+			},
+			".xn--3e0b707e": &server_elt{
+				name: "whois.kr",
+				kind: 0,
+				pattern: nil,
+			},
+			".xn--45br5cyl": &server_elt{
+				name: "whois.registry.in",
+				kind: 0,
+				pattern: nil,
+			},
+			".xn--4dbrk0ce": &server_elt{
+				name: "whois.isoc.org.il",
+				kind: 0,
+				pattern: nil,
+			},
+			".xn--mgb9awbf": &server_elt{
+				name: "whois.registry.om",
+				kind: 0,
+				pattern: nil,
+			},
+		},
 	},
 	{
 		length: 12,
-		suffix: map[string][]string{"chambagri.fr":[]string{"whois.smallregistry.net"}, "construction":[]string{"whois.donuts.co"}, "lplfinancial":[]string{"whois.nic.lplfinancial"}, "scholarships":[]string{"whois.afilias-srs.net"}, "turystyka.pl":[]string{"whois.dns.pl"}, "versicherung":[]string{"whois.nic.versicherung"}, "xn--3e0b707e":[]string{"whois.kr"}, "xn--80adxhks":[]string{"whois.nic.xn--80adxhks"}, "xn--80asehdb":[]string{"whois.online.rs.corenic.net"}, "xn--8y0a063a":[]string{"whois.imena.bg"}, "xn--mgb9awbf":[]string{"whois.registry.om"}, "xn--mgbt3dhd":[]string{"whois.agitsys.net"}, "xn--mk1bu44c":[]string{"whois.nic.xn--mk1bu44c"}, "xn--ngbc5azd":[]string{"whois.nic.xn--ngbc5azd"}, "xn--ngbe9e0a":[]string{"whois.nic.xn--ngbe9e0a"}, "xn--ogbpf8fl":[]string{"whois.tld.sy"}, "xn--qcka1pmc":[]string{"domain-registry-whois.l.google.com", "whois.nic.google"}},
+		suffix: map[string]*server_elt{
+			".xn--3hcrj9c": &server_elt{
+				name: "whois.registry.in",
+				kind: 0,
+				pattern: nil,
+			},
+			".xn--45brj9c": &server_elt{
+				name: "whois.registry.in",
+				kind: 0,
+				pattern: nil,
+			},
+			".xn--j6w193g": &server_elt{
+				name: "whois.hkirc.hk",
+				kind: 0,
+				pattern: nil,
+			},
+			".xn--kpry57d": &server_elt{
+				name: "whois.twnic.net.tw",
+				kind: 0,
+				pattern: nil,
+			},
+			".xn--mgbtx2b": &server_elt{
+				name: "whois.cmc.iq",
+				kind: 0,
+				pattern: nil,
+			},
+			".xn--pgbs0dh": &server_elt{
+				name: "whois.ati.tn",
+				kind: 0,
+				pattern: nil,
+			},
+			".xn--2scrj9c": &server_elt{
+				name: "whois.registry.in",
+				kind: 0,
+				pattern: nil,
+			},
+			".xn--80ao21a": &server_elt{
+				name: "whois.nic.kz",
+				kind: 0,
+				pattern: nil,
+			},
+			".xn--gecrj9c": &server_elt{
+				name: "whois.registry.in",
+				kind: 0,
+				pattern: nil,
+			},
+			".xn--h2brj9c": &server_elt{
+				name: "whois.registry.in",
+				kind: 0,
+				pattern: nil,
+			},
+			".xn--kprw13d": &server_elt{
+				name: "whois.twnic.net.tw",
+				kind: 0,
+				pattern: nil,
+			},
+			".xn--mgbbh1a": &server_elt{
+				name: "whois.registry.in",
+				kind: 0,
+				pattern: nil,
+			},
+			".xn--s9brj9c": &server_elt{
+				name: "whois.registry.in",
+				kind: 0,
+				pattern: nil,
+			},
+		},
 	},
 	{
 		length: 11,
-		suffix: map[string][]string{"accountants":[]string{"whois.donuts.co"}, "aeroport.fr":[]string{"whois.smallregistry.net"}, "barclaycard":[]string{"whois.nic.barclaycard"}, "blackfriday":[]string{"whois.uniregistry.net"}, "blockbuster":[]string{"whois.afilias-srs.net"}, "bridgestone":[]string{"whois.nic.bridgestone"}, "contractors":[]string{"whois.donuts.co"}, "creditunion":[]string{"whois.afilias-srs.net"}, "engineering":[]string{"whois.donuts.co"}, "enterprises":[]string{"whois.donuts.co"}, "foodnetwork":[]string{"whois.nic.foodnetwork"}, "investments":[]string{"whois.donuts.co"}, "kerryhotels":[]string{"whois.nic.kerryhotels"}, "lamborghini":[]string{"whois.afilias-srs.net"}, "motorcycles":[]string{"whois.afilias-srs.net"}, "notaires.fr":[]string{"whois.smallregistry.net"}, "olayangroup":[]string{"whois.nic.olayangroup"}, "photography":[]string{"whois.donuts.co"}, "playstation":[]string{"whois.nic.playstation"}, "productions":[]string{"whois.donuts.co"}, "progressive":[]string{"whois.afilias-srs.net"}, "redumbrella":[]string{"whois.afilias-srs.net"}, "rightathome":[]string{"whois.nic.rightathome"}, "xn--11b4c3d":[]string{"whois.nic.xn--11b4c3d"}, "xn--1qqw23a":[]string{"whois.ngtld.cn"}, "xn--3bst00m":[]string{"whois.gtld.knet.cn"}, "xn--3ds443g":[]string{"whois.afilias-srs.net", "whois.teleinfo.cn"}, "xn--42c2d9a":[]string{"whois.nic.xn--42c2d9a"}, "xn--45brj9c":[]string{"whois.inregistry.net"}, "xn--55qw42g":[]string{"whois.conac.cn"}, "xn--6frz82g":[]string{"whois.afilias.net"}, "xn--80ao21a":[]string{"whois.nic.kz"}, "xn--9krt00a":[]string{"whois.afilias-srs.net"}, "xn--d1acj3b":[]string{"whois.nic.xn--d1acj3b"}, "xn--efvy88h":[]string{"whois.nic.xn--efvy88h"}, "xn--estv75g":[]string{"whois.afilias-srs.net"}, "xn--fjq720a":[]string{"whois.donuts.co"}, "xn--flw351e":[]string{"domain-registry-whois.l.google.com", "whois.nic.google"}, "xn--g2xx48c":[]string{"whois.afilias-srs.net"}, "xn--gecrj9c":[]string{"whois.inregistry.net"}, "xn--h2brj9c":[]string{"whois.inregistry.net"}, "xn--hxt814e":[]string{"whois.nic.xn--hxt814e"}, "xn--j6w193g":[]string{"whois.hkirc.hk"}, "xn--kprw13d":[]string{"whois.twnic.net.tw"}, "xn--kpry57d":[]string{"whois.twnic.net.tw"}, "xn--mix891f":[]string{"whois.monic.mo"}, "xn--q9jyb4c":[]string{"domain-registry-whois.l.google.com", "whois.nic.google"}, "xn--rhqv96g":[]string{"whois.nic.xn--rhqv96g"}, "xn--s9brj9c":[]string{"whois.inregistry.net"}, "xn--ses554g":[]string{"whois.registry.knet.cn"}, "xn--t60b56a":[]string{"whois.nic.xn--t60b56a"}, "xn--vuq861b":[]string{"whois.ngtld.cn", "whois.teleinfo.cn"}, "xn--w4rs40l":[]string{"whois.nic.xn--w4rs40l"}, "xn--xhq521b":[]string{"whois.ngtld.cn", "whois.teleinfo.cn"}, "xn--zfr164b":[]string{"whois.conac.cn"}},
+		suffix: map[string]*server_elt{
+			".xn--wgbh1c": &server_elt{
+				name: "whois.dotmasr.eg",
+				kind: 0,
+				pattern: nil,
+			},
+			".xn--wgbl6a": &server_elt{
+				name: "whois.registry.qa",
+				kind: 0,
+				pattern: nil,
+			},
+			".xn--y9a3aq": &server_elt{
+				name: "whois.amnic.net",
+				kind: 0,
+				pattern: nil,
+			},
+			".xn--90a3ac": &server_elt{
+				name: "whois.rnids.rs",
+				kind: 0,
+				pattern: nil,
+			},
+			".xn--fiqs8s": &server_elt{
+				name: "cwhois.cnnic.cn",
+				kind: 0,
+				pattern: nil,
+			},
+			".xn--fiqz9s": &server_elt{
+				name: "cwhois.cnnic.cn",
+				kind: 0,
+				pattern: nil,
+			},
+			".xn--o3cw4h": &server_elt{
+				name: "whois.thnic.co.th",
+				kind: 0,
+				pattern: nil,
+			},
+			".xn--q7ce6a": &server_elt{
+				name: "whois.nic.la",
+				kind: 0,
+				pattern: nil,
+			},
+		},
 	},
 	{
 		length: 10,
-		suffix: map[string][]string{"accountant":[]string{"whois.nic.accountant"}, "africa.com":[]string{"srs-whois.dns.net.za", "whois.centralnic.com"}, "apartments":[]string{"whois.donuts.co"}, "associates":[]string{"whois.donuts.co"}, "basketball":[]string{"whois.nic.basketball"}, "bnpparibas":[]string{"whois.afilias-srs.net"}, "boehringer":[]string{"whois.afilias-srs.net"}, "capitalone":[]string{"whois.nic.capitalone"}, "consulting":[]string{"whois.unitedtld.com"}, "creditcard":[]string{"whois.donuts.co"}, "cuisinella":[]string{"whois.nic.cuisinella"}, "eurovision":[]string{"whois.nic.eurovision"}, "extraspace":[]string{"whois.afilias-srs.net"}, "foundation":[]string{"whois.donuts.co"}, "healthcare":[]string{"whois.donuts.co"}, "immobilien":[]string{"whois.unitedtld.com"}, "industries":[]string{"whois.donuts.co"}, "management":[]string{"whois.donuts.co"}, "medecin.fr":[]string{"whois.smallregistry.net"}, "mitsubishi":[]string{"whois.nic.gmo"}, "nationwide":[]string{"whois.nic.nationwide"}, "newholland":[]string{"whois.afilias-srs.net"}, "nextdirect":[]string{"whois.nic.nextdirect"}, "onyourside":[]string{"whois.nic.onyourside"}, "properties":[]string{"whois.donuts.co"}, "protection":[]string{"whois.centralnic.com", "whois.nic.protection"}, "realestate":[]string{"whois.nic.realestate"}, "republican":[]string{"whois.rightside.co"}, "restaurant":[]string{"whois.donuts.co"}, "schaeffler":[]string{"whois.afilias-srs.net"}, "tatamotors":[]string{"whois.nic.tatamotors"}, "technology":[]string{"whois.donuts.co"}, "telefonica":[]string{"whois-fe.telefonica.tango.knipp.de"}, "tourism.pl":[]string{"whois.dns.pl"}, "university":[]string{"whois.donuts.co"}, "vistaprint":[]string{"whois.nic.vistaprint"}, "vlaanderen":[]string{"whois.nic.vlaanderen"}, "volkswagen":[]string{"whois.afilias-srs.net"}, "xn--30rr7y":[]string{"whois.gtld.knet.cn", "whois.nic.wang"}, "xn--3pxu8k":[]string{"whois.nic.xn--3pxu8k"}, "xn--45q11c":[]string{"whois.nic.xn--45q11c"}, "xn--4gbrim":[]string{"whois.afilias-srs.net"}, "xn--55qx5d":[]string{"whois.ngtld.cn"}, "xn--5tzm5g":[]string{"whois.afilias-srs.net"}, "xn--80aswg":[]string{"whois.online.rs.corenic.net", "whois.site.rs.corenic.net"}, "xn--90a3ac":[]string{"whois.rnids.rs"}, "xn--9dbq2a":[]string{"whois.nic.xn--9dbq2a"}, "xn--9et52u":[]string{"whois.gtld.knet.cn", "whois.nic.wang"}, "xn--c2br7g":[]string{"whois.nic.xn--c2br7g"}, "xn--cg4bki":[]string{"whois.kr"}, "xn--czrs0t":[]string{"whois.donuts.co"}, "xn--czru2d":[]string{"whois.gtld.knet.cn"}, "xn--fiq64b":[]string{"whois.gtld.knet.cn"}, "xn--fiqs8s":[]string{"cwhois.cnnic.cn"}, "xn--fiqz9s":[]string{"cwhois.cnnic.cn"}, "xn--io0a7i":[]string{"whois.ngtld.cn"}, "xn--kput3i":[]string{"whois.afilias-srs.net", "whois.nic.xn--kput3i"}, "xn--mxtq1m":[]string{"whois.nic.xn--mxtq1m"}, "xn--o3cw4h":[]string{"whois.thnic.co.th"}, "xn--pssy2u":[]string{"whois.nic.xn--pssy2u"}, "xn--unup4y":[]string{"whois.donuts.co"}, "xn--wgbh1c":[]string{"whois.dotmasr.eg"}, "xn--wgbl6a":[]string{"whois.registry.qa"}, "xn--y9a3aq":[]string{"whois.amnic.net"}},
+		suffix: map[string]*server_elt{
+			".xn--d1alf": &server_elt{
+				name: "whois.marnet.mk",
+				kind: 0,
+				pattern: nil,
+			},
+			".xn--e1a4c": &server_elt{
+				name: "whois.eu",
+				kind: 0,
+				pattern: nil,
+			},
+			".xn--j1amh": &server_elt{
+				name: "whois.dotukr.com",
+				kind: 0,
+				pattern: nil,
+			},
+			".xn--qxa6a": &server_elt{
+				name: "whois.eu",
+				kind: 0,
+				pattern: nil,
+			},
+			".e164.arpa": &server_elt{
+				name: "whois.ripe.net",
+				kind: 0,
+				pattern: nil,
+			},
+			".xn--90ais": &server_elt{
+				name: "whois.cctld.by",
+				kind: 0,
+				pattern: nil,
+			},
+		},
 	},
 	{
 		length: 9,
-		suffix: map[string][]string{"alfaromeo":[]string{"whois.afilias-srs.net"}, "allfinanz":[]string{"whois.ksregistry.net"}, "amsterdam":[]string{"whois.nic.amsterdam"}, "aquarelle":[]string{"whois-aquarelle.nic.fr"}, "avocat.fr":[]string{"whois.smallregistry.net"}, "barcelona":[]string{"whois.nic.barcelona"}, "christmas":[]string{"whois.uniregistry.net"}, "community":[]string{"whois.donuts.co"}, "directory":[]string{"whois.donuts.co"}, "e164.arpa":[]string{"whois.ripe.net"}, "education":[]string{"whois.donuts.co"}, "equipment":[]string{"whois.donuts.co"}, "fairwinds":[]string{"whois.nic.fairwinds"}, "financial":[]string{"whois.donuts.co"}, "firestone":[]string{"whois.nic.firestone"}, "fresenius":[]string{"whois.ksregistry.net"}, "frontdoor":[]string{"whois.nic.frontdoor"}, "fujixerox":[]string{"whois.nic.fujixerox"}, "furniture":[]string{"whois.donuts.co"}, "goldpoint":[]string{"whois.nic.goldpoint"}, "goodhands":[]string{"whois.afilias-srs.net"}, "hisamitsu":[]string{"whois.nic.gmo"}, "homedepot":[]string{"whois.afilias-srs.net"}, "institute":[]string{"whois.donuts.co"}, "insurance":[]string{"whois.nic.insurance"}, "kuokgroup":[]string{"whois.nic.kuokgroup"}, "ladbrokes":[]string{"whois.nic.ladbrokes"}, "lancaster":[]string{"whois-lancaster.nic.fr"}, "landrover":[]string{"whois.nic.landrover"}, "lifestyle":[]string{"whois.nic.lifestyle"}, "marketing":[]string{"whois.donuts.co"}, "melbourne":[]string{"whois.aridnrs.net.au"}, "miasta.pl":[]string{"whois.dns.pl"}, "panasonic":[]string{"whois.nic.gmo"}, "presse.fr":[]string{"whois.nic.fr"}, "richardli":[]string{"whois.afilias-srs.net"}, "school.nz":[]string{"whois.srs.net.nz"}, "school.za":[]string{"whois.co.za"}, "scjohnson":[]string{"whois.nic.scjohnson"}, "shangrila":[]string{"whois.nic.shangrila"}, "solutions":[]string{"whois.donuts.co"}, "statebank":[]string{"whois.afilias-srs.net"}, "stockholm":[]string{"whois.afilias-srs.net"}, "travel.pl":[]string{"whois.dns.pl"}, "travelers":[]string{"whois.afilias-srs.net"}, "vacations":[]string{"whois.donuts.co"}, "xn--90ais":[]string{"whois.cctld.by"}, "xn--c1avg":[]string{"whois.publicinterestregistry.net"}, "xn--d1alf":[]string{"whois.marnet.mk"}, "xn--e1a4c":[]string{"whois.eu"}, "xn--fhbei":[]string{"whois.nic.xn--fhbei"}, "xn--j1aef":[]string{"whois.nic.xn--j1aef"}, "xn--j1amh":[]string{"whois.dotukr.com"}, "xn--nqv7f":[]string{"whois.publicinterestregistry.net"}, "xn--p1acf":[]string{"whois.nic.xn--p1acf"}, "xn--tckwe":[]string{"whois.nic.xn--tckwe"}, "xn--vhquv":[]string{"whois.donuts.co"}, "yodobashi":[]string{"whois.nic.gmo"}},
+		suffix: map[string]*server_elt{
+			".xn--90ae": &server_elt{
+				name: "whois.imena.bg",
+				kind: 0,
+				pattern: nil,
+			},
+			".xn--node": &server_elt{
+				name: "whois.itdc.ge",
+				kind: 0,
+				pattern: nil,
+			},
+			".xn--p1ai": &server_elt{
+				name: "whois.tcinet.ru",
+				kind: 0,
+				pattern: nil,
+			},
+			".ip6.arpa": &server_elt{
+				name: "IP6",
+				kind: 0,
+				pattern: nil,
+			},
+		},
 	},
 	{
 		length: 8,
-		suffix: map[string][]string{"abudhabi":[]string{"whois.nic.abudhabi"}, "airforce":[]string{"whois.unitedtld.com"}, "allstate":[]string{"whois.afilias-srs.net"}, "attorney":[]string{"whois.rightside.co"}, "barclays":[]string{"whois.nic.barclays"}, "barefoot":[]string{"whois.nic.barefoot"}, "bargains":[]string{"whois.donuts.co"}, "boutique":[]string{"whois.donuts.co"}, "bradesco":[]string{"whois-cl01.mm-registry.com"}, "broadway":[]string{"whois-cl01.mm-registry.com", "whois.nic.broadway"}, "brussels":[]string{"whois.nic.brussels"}, "budapest":[]string{"whois-dub.mm-registry.com", "whois.nic.budapest"}, "builders":[]string{"whois.donuts.co"}, "business":[]string{"whois.donuts.co"}, "capetown":[]string{"capetown-whois.registry.net.za"}, "catering":[]string{"whois.donuts.co"}, "chrysler":[]string{"whois.afilias-srs.net"}, "cipriani":[]string{"whois.afilias-srs.net"}, "cityeats":[]string{"whois.nic.cityeats"}, "cleaning":[]string{"whois.donuts.co"}, "clinique":[]string{"whois.afilias-srs.net"}, "clothing":[]string{"whois.donuts.co"}, "commbank":[]string{"whois.nic.commbank"}, "computer":[]string{"whois.donuts.co"}, "delivery":[]string{"whois.donuts.co"}, "deloitte":[]string{"whois.nic.deloitte"}, "democrat":[]string{"whois.unitedtld.com"}, "diamonds":[]string{"whois.donuts.co"}, "discount":[]string{"whois.donuts.co"}, "download":[]string{"whois.nic.download"}, "engineer":[]string{"whois.rightside.co"}, "ericsson":[]string{"whois.nic.ericsson"}, "ernet.in":[]string{"whois.inregistry.in"}, "esurance":[]string{"whois.afilias-srs.net"}, "everbank":[]string{"whois.nic.everbank"}, "exchange":[]string{"whois.donuts.co"}, "feedback":[]string{"whois.centralnic.com", "whois.nic.feedback"}, "fidelity":[]string{"whois.nic.fidelity"}, "firmdale":[]string{"whois.nic.firmdale"}, "flsmidth":[]string{"whois.ksregistry.net"}, "football":[]string{"whois.donuts.co"}, "gmina.pl":[]string{"whois.dns.pl"}, "goodyear":[]string{"whois.afilias-srs.net"}, "graphics":[]string{"whois.donuts.co"}, "hdfcbank":[]string{"whois.afilias-srs.net"}, "helsinki":[]string{"whois.afilias-srs.net"}, "holdings":[]string{"whois.donuts.co"}, "infiniti":[]string{"whois.nic.gmo"}, "istanbul":[]string{"whois.afilias-srs.net"}, "lighting":[]string{"whois.donuts.co"}, "lundbeck":[]string{"whois.nic.lundbeck"}, "maori.nz":[]string{"whois.srs.net.nz"}, "marriott":[]string{"whois.afilias-srs.net"}, "maserati":[]string{"whois.afilias-srs.net"}, "mckinsey":[]string{"whois.afilias-srs.net"}, "media.pl":[]string{"whois.dns.pl"}, "memorial":[]string{"whois.donuts.co"}, "mortgage":[]string{"whois.rightside.co"}, "movistar":[]string{"whois-fe.movistar.tango.knipp.de"}, "mutuelle":[]string{"whois-mutuelle.nic.fr"}, "observer":[]string{"whois.nic.observer"}, "partners":[]string{"whois.donuts.co"}, "pictures":[]string{"whois.donuts.co"}, "plumbing":[]string{"whois.donuts.co"}, "property":[]string{"whois.uniregistry.net"}, "redstone":[]string{"whois.afilias-srs.net", "whois.nic.redstone"}, "saarland":[]string{"whois.ksregistry.net"}, "samsclub":[]string{"whois.nic.samsclub"}, "security":[]string{"whois.nic.security"}, "services":[]string{"whois.donuts.co"}, "shopping":[]string{"whois.donuts.co"}, "showtime":[]string{"whois.afilias-srs.net"}, "sklep.pl":[]string{"whois.dns.pl"}, "sochi.su":[]string{"whois.nic.ru"}, "softbank":[]string{"whois.nic.softbank"}, "software":[]string{"whois.rightside.co"}, "stcgroup":[]string{"whois.centralnic.com"}, "store.ro":[]string{"whois.rotld.ro"}, "supplies":[]string{"whois.donuts.co"}, "symantec":[]string{"whois.nic.symantec"}, "targi.pl":[]string{"whois.dns.pl"}, "telecity":[]string{"whois.nic.telecity"}, "training":[]string{"whois.donuts.co"}, "uconnect":[]string{"whois.afilias-srs.net"}, "vanguard":[]string{"whois.nic.vanguard"}, "ventures":[]string{"whois.donuts.co"}, "verisign":[]string{"whois.nic.verisign"}, "woodside":[]string{"whois.nic.woodside"}, "xn--90ae":[]string{"whois.imena.bg"}, "xn--node":[]string{"whois.itdc.ge"}, "xn--p1ai":[]string{"whois.ripn.net", "whois.tcinet.ru"}},
+		suffix: map[string]*server_elt{
+			".jpn.com": &server_elt{
+				name: "whois.centralnic.net",
+				kind: 0,
+				pattern: nil,
+			},
+			".web.com": &server_elt{
+				name: "whois.centralnic.net",
+				kind: 0,
+				pattern: nil,
+			},
+			".priv.at": &server_elt{
+				name: "whois.nic.priv.at",
+				kind: 0,
+				pattern: nil,
+			},
+		},
 	},
 	{
 		length: 7,
-		suffix: map[string][]string{"abogado":[]string{"whois-dub.mm-registry.com"}, "academy":[]string{"whois.donuts.co"}, "agakhan":[]string{"whois.afilias-srs.net"}, "agro.pl":[]string{"whois.dns.pl"}, "alibaba":[]string{"whois.afilias-srs.net"}, "android":[]string{"domain-registry-whois.l.google.com", "whois.nic.google"}, "arts.ro":[]string{"whois.rotld.ro"}, "asso.fr":[]string{"whois.nic.fr"}, "asso.mc":[]string{"whois.ripe.net"}, "auction":[]string{"whois.donuts.co", "whois.unitedtld.com"}, "auspost":[]string{"whois.nic.auspost"}, "auto.pl":[]string{"whois.dns.pl"}, "avianca":[]string{"whois.afilias-srs.net"}, "bauhaus":[]string{"whois.nic.bauhaus"}, "bentley":[]string{"whois.nic.bentley"}, "bestbuy":[]string{"whois.afilias-srs.net"}, "brother":[]string{"whois.nic.brother"}, "bugatti":[]string{"whois.afilias-srs.net"}, "capital":[]string{"whois.donuts.co"}, "careers":[]string{"whois.donuts.co"}, "channel":[]string{"domain-registry-whois.l.google.com", "whois.nic.google"}, "chintai":[]string{"whois.nic.chintai"}, "clubmed":[]string{"whois.nic.clubmed"}, "college":[]string{"whois.centralnic.com", "whois.nic.college"}, "cologne":[]string{"whois-fe1.pdt.cologne.tango.knipp.de"}, "comcast":[]string{"whois.nic.comcast"}, "company":[]string{"whois.donuts.co"}, "compare":[]string{"whois.nic.compare"}, "contact":[]string{"whois.nic.contact"}, "cooking":[]string{"whois-dub.mm-registry.com", "whois.nic.cooking"}, "corsica":[]string{"whois-corsica.nic.fr"}, "country":[]string{"whois-dub.mm-registry.com"}, "coupons":[]string{"whois.donuts.co"}, "courses":[]string{"whois.aridnrs.net.au"}, "cricket":[]string{"whois.nic.cricket"}, "cruises":[]string{"whois.donuts.co"}, "dentist":[]string{"whois.rightside.co"}, "digital":[]string{"whois.donuts.co"}, "domains":[]string{"whois.donuts.co"}, "exposed":[]string{"whois.donuts.co"}, "express":[]string{"whois.donuts.co"}, "fashion":[]string{"whois-dub.mm-registry.com", "whois.nic.fashion"}, "ferrari":[]string{"whois.afilias-srs.net"}, "finance":[]string{"whois.donuts.co"}, "firm.ro":[]string{"whois.rotld.ro"}, "fishing":[]string{"whois-dub.mm-registry.com", "whois.nic.fishing"}, "fitness":[]string{"whois.donuts.co"}, "flights":[]string{"whois.donuts.co"}, "florist":[]string{"whois.donuts.co"}, "flowers":[]string{"whois.uniregistry.net"}, "forsale":[]string{"whois.unitedtld.com"}, "frogans":[]string{"whois-frogans.nic.fr"}, "fujitsu":[]string{"whois.nic.gmo"}, "gallery":[]string{"whois.donuts.co"}, "geek.nz":[]string{"whois.srs.net.nz"}, "genting":[]string{"whois.nic.genting"}, "godaddy":[]string{"whois.afilias-srs.net"}, "guitars":[]string{"whois.uniregistry.net"}, "hamburg":[]string{"whois.nic.hamburg"}, "hangout":[]string{"domain-registry-whois.l.google.com", "whois.nic.google"}, "hitachi":[]string{"whois.nic.gmo"}, "holiday":[]string{"whois.donuts.co"}, "hosting":[]string{"whois.uniregistry.net"}, "hyundai":[]string{"whois.nic.hyundai"}, "info.pl":[]string{"whois.dns.pl"}, "info.ro":[]string{"whois.rotld.ro"}, "info.ve":[]string{"whois.nic.ve"}, "iselect":[]string{"whois.nic.iselect"}, "ismaili":[]string{"whois.afilias-srs.net"}, "jewelry":[]string{"whois.donuts.co"}, "jpn.com":[]string{"whois.centralnic.com", "whois.centralnic.net"}, "juniper":[]string{"whois.nic.juniper"}, "kiev.ua":[]string{"whois.net.ua"}, "kitchen":[]string{"whois.donuts.co"}, "kiwi.nz":[]string{"whois.srs.net.nz"}, "komatsu":[]string{"whois.nic.komatsu"}, "lacaixa":[]string{"whois.nic.lacaixa"}, "lancome":[]string{"whois.nic.lancome"}, "lasalle":[]string{"whois.afilias-srs.net"}, "latrobe":[]string{"whois.nic.latrobe"}, "leclerc":[]string{"whois-leclerc.nic.fr"}, "liaison":[]string{"whois.nic.liaison"}, "limited":[]string{"whois.donuts.co"}, "lviv.ua":[]string{"whois.net.ua"}, "mail.pl":[]string{"whois.dns.pl"}, "markets":[]string{"whois.nic.markets"}, "metlife":[]string{"whois.afilias-srs.net"}, "monster":[]string{"whois.afilias-srs.net"}, "muni.il":[]string{"whois.isoc.org.il"}, "netbank":[]string{"whois.nic.netbank"}, "network":[]string{"whois.donuts.co"}, "organic":[]string{"whois.afilias-srs.net", "whois.afilias.net"}, "origins":[]string{"whois.afilias-srs.net"}, "philips":[]string{"whois.nic.philips"}, "pioneer":[]string{"whois.nic.gmo"}, "politie":[]string{"whois.nic.politie"}, "port.fr":[]string{"whois.smallregistry.net"}, "priv.at":[]string{"whois.nic.priv.at"}, "priv.pl":[]string{"whois.dns.pl"}, "recipes":[]string{"whois.donuts.co"}, "rentals":[]string{"whois.donuts.co"}, "reviews":[]string{"whois.unitedtld.com"}, "rexroth":[]string{"whois.nic.rexroth"}, "samsung":[]string{"whois.nic.samsung", "whois.nic.xn--cg4bki"}, "sandvik":[]string{"whois.nic.sandvik"}, "schmidt":[]string{"whois.nic.schmidt"}, "schwarz":[]string{"whois.nic.schwarz"}, "science":[]string{"whois.nic.science"}, "shiksha":[]string{"whois.afilias.net"}, "shop.pl":[]string{"whois.dns.pl"}, "shriram":[]string{"whois.afilias-srs.net"}, "singles":[]string{"whois.donuts.co"}, "spiegel":[]string{"whois.ksregistry.net"}, "starhub":[]string{"whois.nic.starhub"}, "statoil":[]string{"whois.nic.statoil"}, "storage":[]string{"whois.afilias-srs.net"}, "support":[]string{"whois.donuts.co"}, "surgery":[]string{"whois.donuts.co"}, "systems":[]string{"whois.donuts.co"}, "temasek":[]string{"whois.afilias-srs.net"}, "theater":[]string{"whois.donuts.co"}, "theatre":[]string{"whois.nic.theatre"}, "tickets":[]string{"whois.nic.tickets"}, "tiffany":[]string{"whois.nic.tiffany"}, "toshiba":[]string{"whois.nic.toshiba"}, "trading":[]string{"whois.nic.trading"}, "walmart":[]string{"whois.nic.walmart"}, "web.com":[]string{"whois.centralnic.net"}, "website":[]string{"whois.nic.website"}, "wedding":[]string{"whois-dub.mm-registry.com", "whois.nic.wedding"}, "whoswho":[]string{"whois.nic.whoswho"}, "xfinity":[]string{"whois.nic.xfinity"}, "youtube":[]string{"domain-registry-whois.l.google.com", "whois.nic.google"}, "zuerich":[]string{"whois.ksregistry.net"}},
+		suffix: map[string]*server_elt{
+			".com.ru": &server_elt{
+				name: "whois.flexireg.net",
+				kind: 0,
+				pattern: nil,
+			},
+			".msk.ru": &server_elt{
+				name: "whois.flexireg.net",
+				kind: 0,
+				pattern: nil,
+			},
+			".no.com": &server_elt{
+				name: "whois.centralnic.net",
+				kind: 0,
+				pattern: nil,
+			},
+			".se.com": &server_elt{
+				name: "whois.centralnic.net",
+				kind: 0,
+				pattern: nil,
+			},
+			".se.net": &server_elt{
+				name: "whois.centralnic.net",
+				kind: 0,
+				pattern: nil,
+			},
+			".za.com": &server_elt{
+				name: "whois.centralnic.net",
+				kind: 0,
+				pattern: nil,
+			},
+			".edu.cn": &server_elt{
+				name: "whois.edu.cn",
+				kind: 0,
+				pattern: nil,
+			},
+			".za.org": &server_elt{
+				name: "whois.za.org",
+				kind: 0,
+				pattern: nil,
+			},
+			".msk.su": &server_elt{
+				name: "whois.flexireg.net",
+				kind: 0,
+				pattern: nil,
+			},
+			".gov.za": &server_elt{
+				name: "whois.gov.za",
+				kind: 0,
+				pattern: nil,
+			},
+			".eu.com": &server_elt{
+				name: "whois.centralnic.net",
+				kind: 0,
+				pattern: nil,
+			},
+			".gb.com": &server_elt{
+				name: "whois.centralnic.net",
+				kind: 0,
+				pattern: nil,
+			},
+			".gb.net": &server_elt{
+				name: "whois.centralnic.net",
+				kind: 0,
+				pattern: nil,
+			},
+			".qc.com": &server_elt{
+				name: "whois.centralnic.net",
+				kind: 0,
+				pattern: nil,
+			},
+			".net.za": &server_elt{
+				name: "net-whois.registry.net.za",
+				kind: 0,
+				pattern: nil,
+			},
+			".org.za": &server_elt{
+				name: "org-whois.registry.net.za",
+				kind: 0,
+				pattern: nil,
+			},
+			".ru.com": &server_elt{
+				name: "whois.centralnic.net",
+				kind: 0,
+				pattern: nil,
+			},
+			".uk.net": &server_elt{
+				name: "whois.centralnic.net",
+				kind: 0,
+				pattern: nil,
+			},
+			".net.ru": &server_elt{
+				name: "whois.nic.net.ru",
+				kind: 0,
+				pattern: nil,
+			},
+			".nov.su": &server_elt{
+				name: "whois.flexireg.net",
+				kind: 0,
+				pattern: nil,
+			},
+			".spb.su": &server_elt{
+				name: "whois.flexireg.net",
+				kind: 0,
+				pattern: nil,
+			},
+			".gr.com": &server_elt{
+				name: "whois.centralnic.net",
+				kind: 0,
+				pattern: nil,
+			},
+			".uy.com": &server_elt{
+				name: "whois.centralnic.net",
+				kind: 0,
+				pattern: nil,
+			},
+			".gov.uk": &server_elt{
+				name: "whois.ja.net",
+				kind: 0,
+				pattern: nil,
+			},
+			".org.ru": &server_elt{
+				name: "whois.nic.net.ru",
+				kind: 0,
+				pattern: nil,
+			},
+			".fed.us": &server_elt{
+				name: "whois.nic.gov",
+				kind: 0,
+				pattern: nil,
+			},
+			".alt.za": &server_elt{
+				name: "whois.alt.za",
+				kind: 0,
+				pattern: nil,
+			},
+			".hu.com": &server_elt{
+				name: "whois.centralnic.net",
+				kind: 0,
+				pattern: nil,
+			},
+			".in.net": &server_elt{
+				name: "whois.centralnic.net",
+				kind: 0,
+				pattern: nil,
+			},
+			".sa.com": &server_elt{
+				name: "whois.centralnic.net",
+				kind: 0,
+				pattern: nil,
+			},
+			".us.com": &server_elt{
+				name: "whois.centralnic.net",
+				kind: 0,
+				pattern: nil,
+			},
+			".za.net": &server_elt{
+				name: "whois.za.net",
+				kind: 0,
+				pattern: nil,
+			},
+			".web.za": &server_elt{
+				name: "web-whois.registry.net.za",
+				kind: 0,
+				pattern: nil,
+			},
+			".cn.com": &server_elt{
+				name: "whois.centralnic.net",
+				kind: 0,
+				pattern: nil,
+			},
+			".eu.org": &server_elt{
+				name: "whois.eu.org",
+				kind: 0,
+				pattern: nil,
+			},
+			".travel": &server_elt{
+				name: "whois.nic.travel",
+				kind: 0,
+				pattern: nil,
+			},
+			".nov.ru": &server_elt{
+				name: "whois.flexireg.net",
+				kind: 0,
+				pattern: nil,
+			},
+			".biz.ua": &server_elt{
+				name: "whois.biz.ua",
+				kind: 0,
+				pattern: nil,
+			},
+			".spb.ru": &server_elt{
+				name: "whois.flexireg.net",
+				kind: 0,
+				pattern: nil,
+			},
+			".br.com": &server_elt{
+				name: "whois.centralnic.net",
+				kind: 0,
+				pattern: nil,
+			},
+			".de.com": &server_elt{
+				name: "whois.centralnic.net",
+				kind: 0,
+				pattern: nil,
+			},
+			".uk.com": &server_elt{
+				name: "whois.centralnic.net",
+				kind: 0,
+				pattern: nil,
+			},
+			".museum": &server_elt{
+				name: "whois.nic.museum",
+				kind: 0,
+				pattern: nil,
+			},
+			".edu.ru": &server_elt{
+				name: "whois.informika.ru",
+				kind: 0,
+				pattern: nil,
+			},
+		},
 	},
 	{
 		length: 6,
-		suffix: map[string][]string{"abarth":[]string{"whois.afilias-srs.net"}, "abbott":[]string{"whois.afilias-srs.net"}, "abbvie":[]string{"whois.afilias-srs.net"}, "active":[]string{"whois.afilias-srs.net"}, "adm.br":[]string{"whois.nic.br"}, "adv.br":[]string{"whois.nic.br"}, "ae.com":[]string{"whois.centralnic.net"}, "ae.org":[]string{"whois.centralnic.com"}, "agency":[]string{"whois.donuts.co"}, "aid.pl":[]string{"whois.dns.pl"}, "airbus":[]string{"whois.nic.airbus"}, "airtel":[]string{"whois.nic.airtel"}, "alipay":[]string{"whois.afilias-srs.net"}, "alsace":[]string{"whois-alsace.nic.fr"}, "alstom":[]string{"whois.nic.alstom"}, "alt.za":[]string{"whois.alt.za", "whois.co.za"}, "anquan":[]string{"whois.teleinfo.cn"}, "ar.com":[]string{"whois.centralnic.com"}, "arq.br":[]string{"whois.nic.br"}, "art.br":[]string{"whois.nic.br"}, "atm.pl":[]string{"whois.dns.pl"}, "bayern":[]string{"whois-dub.mm-registry.com", "whois.nic.bayern"}, "bbs.tr":[]string{"whois.metu.edu.tr"}, "beauty":[]string{"whois.nic.beauty"}, "berlin":[]string{"whois.nic.berlin"}, "bio.br":[]string{"whois.nic.br"}, "biz.pl":[]string{"whois.dns.pl"}, "biz.ua":[]string{"whois.biz.ua"}, "blanco":[]string{"whois.nic.blanco"}, "bostik":[]string{"whois-bostik.nic.fr"}, "br.com":[]string{"whois.centralnic.com", "whois.centralnic.net"}, "broker":[]string{"whois.nic.broker"}, "camera":[]string{"whois.donuts.co"}, "career":[]string{"whois.nic.career"}, "caseih":[]string{"whois.afilias-srs.net"}, "casino":[]string{"whois.donuts.co"}, "center":[]string{"whois.donuts.co"}, "chanel":[]string{"whois.nic.chanel"}, "chrome":[]string{"domain-registry-whois.l.google.com", "whois.nic.google"}, "church":[]string{"whois.donuts.co"}, "claims":[]string{"whois.donuts.co"}, "clinic":[]string{"whois.donuts.co"}, "cn.com":[]string{"whois.centralnic.com", "whois.centralnic.net"}, "cng.br":[]string{"whois.nic.br"}, "cnt.br":[]string{"whois.nic.br"}, "co.com":[]string{"whois.centralnic.net"}, "coffee":[]string{"whois.donuts.co"}, "com.br":[]string{"whois.nic.br"}, "com.cn":[]string{"whois.cnnic.net.cn"}, "com.co":[]string{"whois.nic.co"}, "com.de":[]string{"whois.centralnic.com"}, "com.ec":[]string{"whois.lac.net"}, "com.fr":[]string{"whois.nic.fr"}, "com.hk":[]string{"whois.hkdnr.net.hk"}, "com.mm":[]string{"whois.nic.mm"}, "com.mx":[]string{"whois.nic.mx"}, "com.my":[]string{"whois.mynic.net.my"}, "com.pl":[]string{"whois.dns.pl"}, "com.pt":[]string{"whois.dns.pt"}, "com.ro":[]string{"whois.rotld.ro"}, "com.ru":[]string{"whois.ripn.net", "whois.nic.ru"}, "com.se":[]string{"whois.centralnic.com"}, "com.sg":[]string{"whois.nic.net.sg"}, "com.tr":[]string{"whois.metu.edu.tr"}, "com.tw":[]string{"whois.twnic.net"}, "com.ua":[]string{"whois.net.ua"}, "com.ve":[]string{"whois.nic.ve"}, "comsec":[]string{"whois.nic.comsec"}, "condos":[]string{"whois.donuts.co"}, "credit":[]string{"whois.donuts.co"}, "dating":[]string{"whois.donuts.co"}, "datsun":[]string{"whois.nic.gmo"}, "de.com":[]string{"whois.centralnic.com", "whois.centralnic.net"}, "degree":[]string{"whois.rightside.co"}, "dental":[]string{"whois.donuts.co"}, "design":[]string{"whois.nic.design"}, "direct":[]string{"whois.donuts.co"}, "doctor":[]string{"whois.donuts.co"}, "doosan":[]string{"whois.nic.xn--cg4bki"}, "dunlop":[]string{"whois.afilias-srs.net"}, "durban":[]string{"durban-whois.registry.net.za"}, "ecn.br":[]string{"whois.nic.br"}, "edu.cn":[]string{"whois.cnnic.net.cn", "whois.edu.cn"}, "edu.hk":[]string{"whois.hkdnr.net.hk"}, "edu.mm":[]string{"whois.nic.mm"}, "edu.mx":[]string{"whois.nic.mx"}, "edu.my":[]string{"whois.mynic.net.my"}, "edu.pl":[]string{"whois.dns.pl"}, "edu.pt":[]string{"whois.dns.pt"}, "edu.rs":[]string{"whois.rnids.rs"}, "edu.ru":[]string{"whois.informika.ru"}, "edu.sg":[]string{"whois.nic.net.sg"}, "edu.tr":[]string{"whois.metu.edu.tr"}, "edu.za":[]string{"whois.co.za"}, "emerck":[]string{"whois.afilias-srs.net"}, "energy":[]string{"whois.donuts.co"}, "eng.br":[]string{"whois.nic.br"}, "esp.br":[]string{"whois.nic.br"}, "estate":[]string{"whois.donuts.co"}, "etc.br":[]string{"whois.nic.br"}, "eti.br":[]string{"whois.nic.br"}, "eu.com":[]string{"whois.centralnic.com", "whois.centralnic.net"}, "eu.org":[]string{"whois.eu.org"}, "events":[]string{"whois.donuts.co"}, "expert":[]string{"whois.donuts.co"}, "family":[]string{"whois.rightside.co"}, "fed.us":[]string{"whois.nic.gov"}, "fin.ec":[]string{"whois.lac.net"}, "fot.br":[]string{"whois.nic.br"}, "fst.br":[]string{"whois.nic.br"}, "futbol":[]string{"whois.unitedtld.com"}, "g12.br":[]string{"whois.nic.br"}, "gallup":[]string{"whois.afilias-srs.net"}, "garden":[]string{"whois-dub.mm-registry.com", "whois.nic.garden"}, "gb.com":[]string{"whois.centralnic.com", "whois.centralnic.net"}, "gb.net":[]string{"whois.centralnic.com", "whois.centralnic.net"}, "gen.nz":[]string{"whois.srs.net.nz"}, "george":[]string{"whois.nic.george"}, "giving":[]string{"whois.nic.giving"}, "global":[]string{"whois.afilias-srs.net", "whois.nic.global"}, "gob.mx":[]string{"whois.nic.mx"}, "google":[]string{"domain-registry-whois.l.google.com", "whois.nic.google"}, "gov.br":[]string{"whois.nic.br"}, "gov.cn":[]string{"whois.cnnic.net.cn"}, "gov.ec":[]string{"whois.lac.net"}, "gov.il":[]string{"whois.isoc.org.il"}, "gov.in":[]string{"whois.inregistry.in"}, "gov.mm":[]string{"whois.nic.mm"}, "gov.mx":[]string{"whois.nic.mx"}, "gov.my":[]string{"whois.mynic.net.my"}, "gov.sg":[]string{"whois.nic.net.sg"}, "gov.tr":[]string{"whois.metu.edu.tr"}, "gov.uk":[]string{"whois.ja.net"}, "gov.za":[]string{"whois.gov.za", "whois.co.za"}, "gr.com":[]string{"whois.centralnic.com", "whois.centralnic.net"}, "gratis":[]string{"whois.donuts.co"}, "gsm.pl":[]string{"whois.dns.pl"}, "hermes":[]string{"whois.afilias-srs.net"}, "hiphop":[]string{"whois.uniregistry.net"}, "hockey":[]string{"whois.donuts.co"}, "hu.com":[]string{"whois.centralnic.com", "whois.centralnic.net"}, "hu.net":[]string{"whois.centralnic.com"}, "hughes":[]string{"whois.afilias-srs.net"}, "imamat":[]string{"whois.afilias-srs.net"}, "in.net":[]string{"whois.centralnic.com", "whois.centralnic.net"}, "ind.br":[]string{"whois.nic.br"}, "inf.br":[]string{"whois.nic.br"}, "insure":[]string{"whois.donuts.co"}, "iwi.nz":[]string{"whois.srs.net.nz"}, "jaguar":[]string{"whois.nic.jaguar"}, "joburg":[]string{"joburg-whois.registry.net.za"}, "jor.br":[]string{"whois.nic.br"}, "jp.net":[]string{"whois.centralnic.com"}, "juegos":[]string{"whois.uniregistry.net"}, "k12.il":[]string{"whois.isoc.org.il"}, "k12.tr":[]string{"whois.metu.edu.tr"}, "kaufen":[]string{"whois.unitedtld.com"}, "kosher":[]string{"whois.afilias-srs.net"}, "kr.com":[]string{"whois.centralnic.com", "whois.centralnic.net"}, "lancia":[]string{"whois.afilias-srs.net"}, "latino":[]string{"whois.afilias-srs.net"}, "lawyer":[]string{"whois.rightside.co"}, "lefrak":[]string{"whois.nic.lefrak"}, "lel.br":[]string{"whois.nic.br"}, "locker":[]string{"whois.afilias-srs.net"}, "london":[]string{"whois-lon.mm-registry.com"}, "ltd.uk":[]string{"whois.nic.uk"}, "luxury":[]string{"whois.donuts.co", "whois.nic.luxury"}, "madrid":[]string{"whois.madrid.rs.corenic.net"}, "maison":[]string{"whois.donuts.co"}, "makeup":[]string{"whois.nic.makeup"}, "market":[]string{"whois.rightside.co"}, "med.br":[]string{"whois.nic.br"}, "med.ec":[]string{"whois.lac.net"}, "mil.br":[]string{"whois.nic.br"}, "mil.ec":[]string{"whois.lac.net"}, "mil.id":[]string{"whois.idnic.net.id"}, "mil.pl":[]string{"whois.dns.pl"}, "mil.tr":[]string{"whois.metu.edu.tr"}, "mil.za":[]string{"whois.co.za"}, "monash":[]string{"whois.nic.monash"}, "mormon":[]string{"whois.afilias-srs.net"}, "moscow":[]string{"whois.nic.moscow"}, "msk.ru":[]string{"whois.nic.ru"}, "museum":[]string{"whois.museum"}, "nagoya":[]string{"whois.gmoregistry.net"}, "natura":[]string{"whois.afilias-srs.net"}, "net.br":[]string{"whois.nic.br"}, "net.cn":[]string{"whois.cnnic.net.cn"}, "net.co":[]string{"whois.nic.co"}, "net.ec":[]string{"whois.lac.net"}, "net.hk":[]string{"whois.hkdnr.net.hk"}, "net.il":[]string{"whois.isoc.org.il"}, "net.in":[]string{"whois.inregistry.in"}, "net.mm":[]string{"whois.nic.mm"}, "net.mx":[]string{"whois.nic.mx"}, "net.my":[]string{"whois.mynic.net.my"}, "net.nz":[]string{"whois.srs.net.nz"}, "net.pl":[]string{"whois.dns.pl"}, "net.ru":[]string{"whois.ripn.net", "whois.nic.ru"}, "net.sg":[]string{"whois.nic.net.sg"}, "net.th":[]string{"whois.thnic.net"}, "net.tr":[]string{"whois.metu.edu.tr"}, "net.tw":[]string{"whois.twnic.net"}, "net.ua":[]string{"whois.net.ua"}, "net.uk":[]string{"whois.nic.uk"}, "net.ve":[]string{"whois.nic.ve"}, "net.za":[]string{"net-whois.registry.net.za", "whois.co.za"}, "ngo.za":[]string{"whois.co.za"}, "nissan":[]string{"whois.nic.gmo"}, "nissay":[]string{"whois.nic.nissay"}, "no.com":[]string{"whois.centralnic.com", "whois.centralnic.net"}, "nom.br":[]string{"whois.nic.br"}, "nom.co":[]string{"whois.nic.co"}, "nom.pl":[]string{"whois.dns.pl"}, "nom.ro":[]string{"whois.rotld.ro"}, "nom.za":[]string{"whois.co.za"}, "norton":[]string{"whois.nic.norton"}, "nowruz":[]string{"whois.agitsys.net"}, "ntr.br":[]string{"whois.nic.br"}, "odo.br":[]string{"whois.nic.br"}, "olayan":[]string{"whois.nic.olayan"}, "online":[]string{"whois.centralnic.com"}, "oracle":[]string{"whois.nic.oracle"}, "orange":[]string{"whois.nic.orange"}, "org.br":[]string{"whois.nic.br"}, "org.cn":[]string{"whois.cnnic.net.cn"}, "org.ec":[]string{"whois.lac.net"}, "org.hk":[]string{"whois.hkdnr.net.hk"}, "org.il":[]string{"whois.isoc.org.il"}, "org.in":[]string{"whois.inregistry.in"}, "org.mm":[]string{"whois.nic.mm"}, "org.mx":[]string{"whois.nic.mx"}, "org.my":[]string{"whois.mynic.net.my"}, "org.nz":[]string{"whois.srs.net.nz"}, "org.pl":[]string{"whois.dns.pl"}, "org.ro":[]string{"whois.rotld.ro"}, "org.rs":[]string{"whois.rnids.rs"}, "org.ru":[]string{"whois.nic.ru"}, "org.sg":[]string{"whois.nic.net.sg"}, "org.tr":[]string{"whois.metu.edu.tr"}, "org.tw":[]string{"whois.twnic.net"}, "org.ua":[]string{"whois.net.ua"}, "org.uk":[]string{"whois.nic.uk"}, "org.ve":[]string{"whois.nic.ve"}, "org.za":[]string{"org-whois.registry.net.za", "whois.org.za"}, "origin":[]string{"whois.afilias-srs.net"}, "photos":[]string{"whois.donuts.co"}, "physio":[]string{"whois.nic.physio"}, "plc.uk":[]string{"whois.nic.uk"}, "ppg.br":[]string{"whois.nic.br"}, "pro.br":[]string{"whois.nic.br"}, "psc.br":[]string{"whois.nic.br"}, "psi.br":[]string{"whois.nic.br"}, "qc.com":[]string{"whois.centralnic.com", "whois.centralnic.net"}, "quebec":[]string{"whois.nic.quebec"}, "racing":[]string{"whois.nic.racing"}, "realty":[]string{"whois.nic.realty"}, "rec.br":[]string{"whois.nic.br"}, "rec.ro":[]string{"whois.rotld.ro"}, "reisen":[]string{"whois.donuts.co"}, "rel.pl":[]string{"whois.dns.pl"}, "repair":[]string{"whois.donuts.co"}, "report":[]string{"whois.donuts.co"}, "res.in":[]string{"whois.inregistry.in"}, "review":[]string{"whois.nic.review"}, "rogers":[]string{"whois.afilias-srs.net"}, "ru.com":[]string{"whois.centralnic.com", "whois.centralnic.net"}, "sa.com":[]string{"whois.centralnic.com", "whois.centralnic.net"}, "sanofi":[]string{"whois.nic.sanofi"}, "school":[]string{"whois.donuts.co"}, "schule":[]string{"whois.donuts.co"}, "se.com":[]string{"whois.centralnic.com", "whois.centralnic.net"}, "se.net":[]string{"whois.centralnic.com", "whois.centralnic.net"}, "select":[]string{"whois.nic.select"}, "shouji":[]string{"whois.teleinfo.cn"}, "slg.br":[]string{"whois.nic.br"}, "soccer":[]string{"whois.donuts.co"}, "social":[]string{"whois.unitedtld.com"}, "sos.pl":[]string{"whois.dns.pl"}, "spb.ru":[]string{"whois.nic.ru"}, "studio":[]string{"whois.rightside.co"}, "supply":[]string{"whois.donuts.co"}, "swatch":[]string{"whois.nic.swatch"}, "sydney":[]string{"whois.nic.sydney"}, "taipei":[]string{"whois.nic.taipei"}, "tattoo":[]string{"whois.uniregistry.net"}, "tennis":[]string{"whois.donuts.co"}, "tienda":[]string{"whois.donuts.co"}, "tiffay":[]string{"whois.nic.tiffany"}, "tmp.br":[]string{"whois.nic.br"}, "toyota":[]string{"whois.nic.toyota"}, "travel":[]string{"whois.nic.travel"}, "tur.br":[]string{"whois.nic.br"}, "uk.com":[]string{"whois.centralnic.com", "whois.centralnic.net"}, "uk.net":[]string{"whois.centralnic.com", "whois.centralnic.net"}, "us.com":[]string{"whois.centralnic.com", "whois.centralnic.net"}, "us.org":[]string{"whois.centralnic.com"}, "uy.com":[]string{"whois.centralnic.com", "whois.centralnic.net"}, "vet.br":[]string{"whois.nic.br"}, "viajes":[]string{"whois.donuts.co"}, "viking":[]string{"whois.afilias-srs.net"}, "villas":[]string{"whois.donuts.co"}, "virgin":[]string{"whois.nic.virgin"}, "vision":[]string{"whois.donuts.co"}, "voting":[]string{"whois.voting.tld-box.at"}, "voyage":[]string{"whois.donuts.co"}, "walter":[]string{"whois.nic.walter"}, "warman":[]string{"whois.nic.warman"}, "web.ve":[]string{"whois.nic.ve"}, "web.za":[]string{"web-whois.registry.net.za", "whois.co.za"}, "webcam":[]string{"whois.nic.webcam"}, "www.ro":[]string{"whois.rotld.ro"}, "xihuan":[]string{"whois.teleinfo.cn"}, "xperia":[]string{"whois.nic.xperia"}, "yachts":[]string{"whois.afilias-srs.net"}, "za.com":[]string{"whois.centralnic.com", "whois.centralnic.net"}, "za.net":[]string{"whois.za.net"}, "za.org":[]string{"whois.za.org"}, "zlg.br":[]string{"whois.nic.br"}},
+		suffix: map[string]*server_elt{
+			".ac.uk": &server_elt{
+				name: "whois.ja.net",
+				kind: 0,
+				pattern: nil,
+			},
+			".ac.za": &server_elt{
+				name: "whois.ac.za",
+				kind: 0,
+				pattern: nil,
+			},
+			".co.ca": &server_elt{
+				name: "whois.co.ca",
+				kind: 0,
+				pattern: nil,
+			},
+			".pp.ru": &server_elt{
+				name: "whois.nic.net.ru",
+				kind: 0,
+				pattern: nil,
+			},
+			".co.ua": &server_elt{
+				name: "whois.co.ua",
+				kind: 0,
+				pattern: nil,
+			},
+			".pp.ua": &server_elt{
+				name: "whois.pp.ua",
+				kind: 0,
+				pattern: nil,
+			},
+			".uk.co": &server_elt{
+				name: "whois.uk.co",
+				kind: 0,
+				pattern: nil,
+			},
+			".co.pl": &server_elt{
+				name: "whois.co.pl",
+				kind: 0,
+				pattern: nil,
+			},
+			".ac.ru": &server_elt{
+				name: "whois.free.net",
+				kind: 0,
+				pattern: nil,
+			},
+			".co.za": &server_elt{
+				name: "whois.registry.net.za",
+				kind: 0,
+				pattern: nil,
+			},
+		},
 	},
 	{
 		length: 5,
-		suffix: map[string][]string{"ac.ac":[]string{"whois.nic.ac"}, "ac.at":[]string{"whois.nic.at"}, "ac.be":[]string{"whois.dns.be"}, "ac.cn":[]string{"whois.cnnic.net.cn"}, "ac.il":[]string{"whois.isoc.org.il"}, "ac.in":[]string{"whois.inregistry.in"}, "ac.jp":[]string{"whois.jprs.jp"}, "ac.ke":[]string{"whois.kenic.or.ke"}, "ac.kr":[]string{"whois.nic.or.kr"}, "ac.nz":[]string{"whois.srs.net.nz"}, "ac.th":[]string{"whois.thnic.net"}, "ac.uk":[]string{"whois.ja.net"}, "ac.za":[]string{"whois.ac.za", "whois.co.za"}, "actor":[]string{"whois.unitedtld.com"}, "adult":[]string{"whois.afilias-srs.net"}, "ah.cn":[]string{"whois.cnnic.net.cn"}, "am.br":[]string{"whois.nic.br"}, "amfam":[]string{"whois.nic.amfam"}, "apple":[]string{"whois.afilias-srs.net"}, "archi":[]string{"whois.ksregistry.net"}, "audio":[]string{"whois.uniregistry.net"}, "autos":[]string{"whois.afilias-srs.net", "whois.afilias.net"}, "baidu":[]string{"whois.ngtld.cn"}, "beats":[]string{"whois.afilias-srs.net"}, "bingo":[]string{"whois.donuts.co"}, "bj.cn":[]string{"whois.cnnic.net.cn"}, "black":[]string{"whois.afilias.net"}, "boats":[]string{"whois.afilias-srs.net"}, "boots":[]string{"whois.nic.boots"}, "bosch":[]string{"whois.nic.bosch"}, "build":[]string{"whois.nic.build"}, "canon":[]string{"whois.nic.canon"}, "cards":[]string{"whois.donuts.co"}, "cheap":[]string{"whois.donuts.co"}, "click":[]string{"whois.uniregistry.net"}, "cloud":[]string{"whois.nic.cloud"}, "co.ac":[]string{"whois.nic.ac"}, "co.at":[]string{"whois.nic.at"}, "co.ca":[]string{"whois.co.ca"}, "co.il":[]string{"whois.isoc.org.il"}, "co.in":[]string{"whois.inregistry.in"}, "co.ke":[]string{"whois.kenic.or.ke"}, "co.kr":[]string{"whois.nic.or.kr"}, "co.nz":[]string{"whois.srs.net.nz"}, "co.pl":[]string{"whois.co.pl"}, "co.rs":[]string{"whois.rnids.rs"}, "co.th":[]string{"whois.thnic.net"}, "co.ua":[]string{"whois.co.ua"}, "co.uk":[]string{"whois.nic.uk"}, "co.ve":[]string{"whois.nic.ve"}, "co.za":[]string{"coza-whois.registry.net.za", "whois.registry.net.za", "co-whois.registry.net.za"}, "coach":[]string{"whois.donuts.co"}, "codes":[]string{"whois.donuts.co"}, "cq.cn":[]string{"whois.cnnic.net.cn"}, "cymru":[]string{"whois.nic.cymru"}, "dabur":[]string{"whois.afilias-srs.net"}, "dance":[]string{"whois.unitedtld.com"}, "deals":[]string{"whois.donuts.co"}, "delta":[]string{"whois.afilias-srs.net"}, "dn.ua":[]string{"whois.net.ua"}, "dodge":[]string{"whois.afilias-srs.net"}, "drive":[]string{"whois.nic.google"}, "dubai":[]string{"whois.nic.dubai"}, "edeka":[]string{"whois.afilias-srs.net"}, "email":[]string{"whois.donuts.co"}, "epson":[]string{"whois.aridnrs.net.au"}, "eu.lv":[]string{"whois.biz"}, "faith":[]string{"whois.nic.faith"}, "fedex":[]string{"whois.afilias-srs.net"}, "final":[]string{"whois.gtlds.nic.br"}, "fm.br":[]string{"whois.nic.br"}, "forex":[]string{"whois.nic.forex"}, "forum":[]string{"whois.nic.forum"}, "gallo":[]string{"whois.nic.gallo"}, "games":[]string{"whois.rightside.co"}, "gd.cn":[]string{"whois.cnnic.net.cn"}, "gifts":[]string{"whois.donuts.co"}, "gives":[]string{"whois.rightside.co"}, "glade":[]string{"whois.nic.glade"}, "glass":[]string{"whois.donuts.co"}, "globo":[]string{"whois.gtlds.nic.br"}, "gmail":[]string{"domain-registry-whois.l.google.com", "whois.nic.google"}, "go.id":[]string{"whois.idnic.net.id"}, "go.kr":[]string{"whois.nic.or.kr"}, "go.th":[]string{"whois.thnic.net"}, "green":[]string{"whois.afilias.net"}, "gripe":[]string{"whois.donuts.co"}, "group":[]string{"whois.donuts.co"}, "gs.cn":[]string{"whois.cnnic.net.cn"}, "guide":[]string{"whois.donuts.co"}, "gv.ac":[]string{"whois.nic.ac"}, "gv.at":[]string{"whois.nic.at"}, "gx.cn":[]string{"whois.cnnic.net.cn"}, "gz.cn":[]string{"whois.cnnic.net.cn"}, "hb.cn":[]string{"whois.cnnic.net.cn"}, "he.cn":[]string{"whois.cnnic.net.cn"}, "hi.cn":[]string{"whois.cnnic.net.cn"}, "hk.cn":[]string{"whois.cnnic.net.cn"}, "hl.cn":[]string{"whois.cnnic.net.cn"}, "hn.cn":[]string{"whois.cnnic.net.cn"}, "homes":[]string{"whois.afilias-srs.net"}, "honda":[]string{"whois.nic.honda"}, "horse":[]string{"whois-dub.mm-registry.com", "whois.nic.horse"}, "house":[]string{"whois.donuts.co"}, "iinet":[]string{"whois.aridnrs.net.au"}, "ikano":[]string{"whois.ikano.tld-box.at"}, "in.rs":[]string{"whois.rnids.rs"}, "in.th":[]string{"whois.thnic.net"}, "in.ua":[]string{"whois.in.ua"}, "irish":[]string{"whois.afilias-srs.net"}, "iveco":[]string{"whois.afilias-srs.net"}, "jetzt":[]string{"whois.nic.jetzt"}, "jl.cn":[]string{"whois.cnnic.net.cn"}, "js.cn":[]string{"whois.cnnic.net.cn"}, "kh.ua":[]string{"whois.net.ua"}, "koeln":[]string{"whois-fe1.pdt.koeln.tango.knipp.de"}, "kyoto":[]string{"whois.nic.kyoto"}, "lamer":[]string{"whois.afilias-srs.net"}, "lease":[]string{"whois.donuts.co"}, "legal":[]string{"whois.donuts.co"}, "lexus":[]string{"whois.nic.lexus"}, "lg.ua":[]string{"whois.net.ua"}, "linde":[]string{"whois.nic.linde"}, "lipsy":[]string{"whois.nic.lipsy"}, "lixil":[]string{"whois.nic.lixil"}, "ln.cn":[]string{"whois.cnnic.net.cn"}, "loans":[]string{"whois.donuts.co"}, "locus":[]string{"whois.nic.locus"}, "lotte":[]string{"whois.nic.lotte"}, "lotto":[]string{"whois.afilias.net"}, "macys":[]string{"whois.nic.macys"}, "mango":[]string{"whois.mango.coreregistry.net"}, "me.uk":[]string{"whois.nic.uk"}, "media":[]string{"whois.donuts.co"}, "mi.th":[]string{"whois.thnic.net"}, "miami":[]string{"whois-dub.mm-registry.com", "whois.nic.miami"}, "mo.cn":[]string{"whois.cnnic.net.cn"}, "money":[]string{"whois.donuts.co"}, "mopar":[]string{"whois.afilias-srs.net"}, "movie":[]string{"whois.donuts.co"}, "nadex":[]string{"whois.nic.nadex"}, "ne.kr":[]string{"whois.nic.or.kr"}, "nexus":[]string{"domain-registry-whois.l.google.com", "whois.nic.google"}, "nikon":[]string{"whois.nic.nikon"}, "ninja":[]string{"whois.donuts.co", "whois.unitedtld.com"}, "nm.cn":[]string{"whois.cnnic.net.cn"}, "nm.kr":[]string{"whois.nic.or.kr"}, "nokia":[]string{"whois.afilias-srs.net"}, "nowtv":[]string{"whois.afilias-srs.net"}, "nt.ro":[]string{"whois.rotld.ro"}, "nx.cn":[]string{"whois.cnnic.net.cn"}, "omega":[]string{"whois.nic.omega"}, "or.ac":[]string{"whois.nic.ac"}, "or.at":[]string{"whois.nic.at"}, "or.kr":[]string{"whois.nic.or.kr"}, "or.th":[]string{"whois.thnic.net"}, "osaka":[]string{"whois.nic.osaka"}, "paris":[]string{"whois-paris.nic.fr"}, "parts":[]string{"whois.donuts.co"}, "party":[]string{"whois.nic.party"}, "pc.pl":[]string{"whois.dns.pl"}, "photo":[]string{"whois.uniregistry.net"}, "pizza":[]string{"whois.donuts.co"}, "place":[]string{"whois.donuts.co"}, "poker":[]string{"whois.afilias.net"}, "pp.ru":[]string{"whois.nic.ru"}, "pp.ua":[]string{"whois.pp.ua"}, "press":[]string{"whois.centralnic.com", "whois.nic.press"}, "promo":[]string{"whois.afilias.net"}, "qh.cn":[]string{"whois.cnnic.net.cn"}, "quest":[]string{"whois.nic.quest"}, "radio":[]string{"whois.nic.radio"}, "re.kr":[]string{"whois.nic.or.kr"}, "rehab":[]string{"whois.rightside.co"}, "reise":[]string{"whois.nic.reise"}, "ricoh":[]string{"whois.nic.ricoh"}, "rocks":[]string{"whois.unitedtld.com"}, "rodeo":[]string{"whois-dub.mm-registry.com", "whois.nic.rodeo"}, "salon":[]string{"whois.donuts.co"}, "sc.cn":[]string{"whois.cnnic.net.cn"}, "seven":[]string{"whois.nic.seven"}, "sh.cn":[]string{"whois.cnnic.net.cn"}, "sharp":[]string{"whois.nic.gmo"}, "shell":[]string{"whois.nic.shell"}, "shoes":[]string{"whois.donuts.co"}, "sling":[]string{"whois.afilias-srs.net"}, "smart":[]string{"whois-gtld.smart.com.ph"}, "sn.cn":[]string{"whois.cnnic.net.cn"}, "solar":[]string{"whois.donuts.co"}, "space":[]string{"whois.nic.space"}, "stada":[]string{"whois.afilias-srs.net"}, "store":[]string{"whois.nic.store"}, "study":[]string{"whois.nic.study"}, "style":[]string{"whois.donuts.co"}, "sucks":[]string{"whois.nic.sucks"}, "swiss":[]string{"whois.nic.swiss"}, "tatar":[]string{"whois.nic.tatar"}, "tires":[]string{"whois.donuts.co"}, "tirol":[]string{"whois.nic.tirol"}, "tj.cn":[]string{"whois.cnnic.net.cn"}, "tm.fr":[]string{"whois.nic.fr"}, "tm.mc":[]string{"whois.ripe.net"}, "tm.pl":[]string{"whois.dns.pl"}, "tm.ro":[]string{"whois.rotld.ro"}, "tm.za":[]string{"whois.co.za"}, "today":[]string{"whois.donuts.co"}, "tokyo":[]string{"whois.nic.tokyo"}, "tools":[]string{"whois.donuts.co"}, "toray":[]string{"whois.nic.toray"}, "total":[]string{"whois-total.nic.fr"}, "tours":[]string{"whois.donuts.co"}, "trade":[]string{"whois.nic.trade"}, "trust":[]string{"whois.nic.trust"}, "tv.br":[]string{"whois.nic.br"}, "tw.cn":[]string{"whois.cnnic.net.cn"}, "ubank":[]string{"whois.nic.ubank"}, "uk.co":[]string{"whois.uk.co"}, "vegas":[]string{"whois.afilias-srs.net"}, "video":[]string{"whois.rightside.co"}, "vista":[]string{"whois.nic.vista"}, "vodka":[]string{"whois-dub.mm-registry.com", "whois.nic.vodka"}, "volvo":[]string{"whois.nic.volvo"}, "wales":[]string{"whois.nic.wales"}, "watch":[]string{"whois.donuts.co"}, "weber":[]string{"whois.nic.weber"}, "weibo":[]string{"whois.afilias-srs.net"}, "works":[]string{"whois.donuts.co"}, "world":[]string{"whois.donuts.co"}, "xerox":[]string{"whois.nic.xerox"}, "xj.cn":[]string{"whois.cnnic.net.cn"}, "xz.cn":[]string{"whois.cnnic.net.cn"}, "yn.cn":[]string{"whois.cnnic.net.cn"}, "za.bz":[]string{"whois.centralnic.com"}, "zj.cn":[]string{"whois.cnnic.net.cn"}},
+		suffix: map[string]*server_elt{
+			".coop": &server_elt{
+				name: "whois.nic.coop",
+				kind: 0,
+				pattern: nil,
+			},
+			".info": &server_elt{
+				name: "whois.afilias.net",
+				kind: 0,
+				pattern: nil,
+			},
+			".jobs": &server_elt{
+				name: "whois.nic.jobs",
+				kind: 1,
+				pattern: nil,
+			},
+			".asia": &server_elt{
+				name: "whois.nic.asia",
+				kind: 0,
+				pattern: nil,
+			},
+			".aero": &server_elt{
+				name: "whois.aero",
+				kind: 0,
+				pattern: nil,
+			},
+			".mobi": &server_elt{
+				name: "whois.afilias.net",
+				kind: 0,
+				pattern: nil,
+			},
+			".name": &server_elt{
+				name: "whois.nic.name",
+				kind: 0,
+				pattern: nil,
+			},
+			".post": &server_elt{
+				name: "whois.dotpostregistry.net",
+				kind: 0,
+				pattern: nil,
+			},
+			".arpa": &server_elt{
+				name: "whois.iana.org",
+				kind: 0,
+				pattern: nil,
+			},
+		},
 	},
 	{
 		length: 4,
-		suffix: map[string][]string{"aarp":[]string{"whois.nic.aarp"}, "adac":[]string{"whois.nic.adac"}, "aero":[]string{"whois.aero"}, "aigo":[]string{"whois.afilias-srs.net"}, "akdn":[]string{"whois.afilias-srs.net"}, "ally":[]string{"whois.afilias-srs.net"}, "army":[]string{"whois.rightside.co"}, "arpa":[]string{"whois.iana.org"}, "arte":[]string{"whois.nic.arte"}, "asda":[]string{"whois.nic.asda"}, "asia":[]string{"whois.nic.asia"}, "audi":[]string{"whois.afilias-srs.net"}, "auto":[]string{"whois.uniregistry.net"}, "band":[]string{"whois.rightside.co"}, "bank":[]string{"whois.nic.bank"}, "bbva":[]string{"whois.nic.bbva"}, "beer":[]string{"whois-dub.mm-registry.com", "whois.nic.beer"}, "best":[]string{"whois.nic.best"}, "bike":[]string{"whois.donuts.co"}, "blog":[]string{"whois.nic.blog"}, "blue":[]string{"whois.afilias.net"}, "bofa":[]string{"whois.nic.bofa"}, "bond":[]string{"whois.nic.bond"}, "buzz":[]string{"whois.nic.buzz"}, "cafe":[]string{"whois.donuts.co"}, "camp":[]string{"whois.donuts.co"}, "care":[]string{"whois.donuts.co"}, "cars":[]string{"whois.uniregistry.net"}, "casa":[]string{"whois-dub.mm-registry.com", "whois.nic.casa"}, "case":[]string{"whois.afilias-srs.net"}, "cash":[]string{"whois.donuts.co"}, "cern":[]string{"whois.afilias-srs.net"}, "chat":[]string{"whois.donuts.co"}, "city":[]string{"whois.donuts.co"}, "club":[]string{"whois.nic.club"}, "cool":[]string{"whois.donuts.co"}, "coop":[]string{"whois.nic.coop"}, "cyou":[]string{"whois.afilias-srs.net"}, "date":[]string{"whois.nic.date"}, "dclk":[]string{"domain-registry-whois.l.google.com", "whois.nic.google"}, "desi":[]string{"whois.ksregistry.net"}, "diet":[]string{"whois.uniregistry.net"}, "dish":[]string{"whois.afilias-srs.net"}, "docs":[]string{"domain-registry-whois.l.google.com", "whois.nic.google"}, "doha":[]string{"whois.nic.doha"}, "duck":[]string{"whois.nic.duck"}, "dvag":[]string{"whois.ksregistry.net"}, "erni":[]string{"whois.nic.erni"}, "fage":[]string{"whois.afilias-srs.net"}, "fail":[]string{"whois.donuts.co"}, "fans":[]string{"whois.nic.fans"}, "farm":[]string{"whois.donuts.co"}, "fiat":[]string{"whois.afilias-srs.net"}, "fido":[]string{"whois.afilias-srs.net"}, "film":[]string{"whois.nic.film"}, "fish":[]string{"whois.donuts.co"}, "fund":[]string{"whois.donuts.co"}, "game":[]string{"whois.uniregistry.net"}, "gbiz":[]string{"domain-registry-whois.l.google.com", "whois.nic.google"}, "gent":[]string{"whois.nic.gent"}, "ggee":[]string{"whois.nic.ggee"}, "gift":[]string{"whois.uniregistry.net"}, "gmbh":[]string{"whois.donuts.co"}, "gold":[]string{"whois.donuts.co"}, "golf":[]string{"whois.donuts.co"}, "goog":[]string{"domain-registry-whois.l.google.com", "whois.nic.google"}, "guge":[]string{"domain-registry-whois.l.google.com", "whois.nic.google"}, "guru":[]string{"whois.donuts.co"}, "haus":[]string{"whois.unitedtld.com"}, "hdfc":[]string{"whois.afilias-srs.net"}, "help":[]string{"whois.uniregistry.net"}, "here":[]string{"domain-registry-whois.l.google.com", "whois.nic.google"}, "hgtv":[]string{"whois.nic.hgtv"}, "host":[]string{"whois.centralnic.com", "whois.nic.host"}, "icbc":[]string{"whois.afilias-srs.net"}, "immo":[]string{"whois.donuts.co"}, "info":[]string{"whois.afilias.info", "whois.afilias.net"}, "java":[]string{"whois.nic.java"}, "jeep":[]string{"whois.afilias-srs.net"}, "jobs":[]string{"whois.nic.jobs"}, "kddi":[]string{"whois.nic.kddi"}, "kiwi":[]string{"whois.dot-kiwi.com", "whois.nic.kiwi"}, "kred":[]string{"whois.nic.kred"}, "land":[]string{"whois.donuts.co"}, "lego":[]string{"whois.nic.lego"}, "lgbt":[]string{"whois.afilias.net"}, "lidl":[]string{"whois.nic.lidl"}, "life":[]string{"whois.donuts.co"}, "limo":[]string{"whois.donuts.co"}, "link":[]string{"whois.uniregistry.net", "whois.unitedtld.com"}, "live":[]string{"whois.rightside.co"}, "loan":[]string{"whois.nic.loan"}, "love":[]string{"whois.centralnic.com", "whois.nic.love"}, "ltda":[]string{"whois.afilias-srs.net"}, "luxe":[]string{"whois-dub.mm-registry.com", "whois.nic.luxe"}, "meet":[]string{"whois.afilias.net", "whois.nic.google"}, "meme":[]string{"domain-registry-whois.l.google.com", "whois.nic.google"}, "menu":[]string{"whois.nic.menu"}, "mini":[]string{"whois.ksregistry.net"}, "mobi":[]string{"whois.afilias.net", "whois.dotmobiregistry.net"}, "moda":[]string{"whois.unitedtld.com"}, "mtpc":[]string{"whois.nic.gmo"}, "name":[]string{"whois.nic.name"}, "navy":[]string{"whois.rightside.co"}, "news":[]string{"whois.rightside.co"}, "next":[]string{"whois.nic.next"}, "nico":[]string{"whois.nic.nico"}, "ollo":[]string{"whois.afilias-srs.net"}, "page":[]string{"domain-registry-whois.l.google.com", "whois.nic.google"}, "pars":[]string{"whois.agitsys.net"}, "pccw":[]string{"whois.afilias-srs.net"}, "pics":[]string{"whois.uniregistry.net"}, "pink":[]string{"whois.afilias.net", "whois.donuts.co"}, "play":[]string{"whois.nic.google"}, "plus":[]string{"whois.donuts.co"}, "pohl":[]string{"whois.ksregistry.net"}, "porn":[]string{"whois.afilias-srs.net"}, "post":[]string{"whois.dotpostregistry.net"}, "prod":[]string{"domain-registry-whois.l.google.com", "whois.nic.google"}, "prof":[]string{"domain-registry-whois.l.google.com", "whois.nic.google"}, "qpon":[]string{"whois.nic.qpon"}, "raid":[]string{"whois.nic.raid"}, "reit":[]string{"whois.nic.reit"}, "rent":[]string{"whois.nic.rent"}, "rest":[]string{"whois.centralnic.com", "whois.nic.rest"}, "rich":[]string{"whois.afilias-srs.net"}, "rsvp":[]string{"domain-registry-whois.l.google.com", "whois.nic.google"}, "ruhr":[]string{"whois.nic.ruhr"}, "sale":[]string{"whois.rightside.co"}, "sarl":[]string{"whois.donuts.co"}, "saxo":[]string{"whois.aridnrs.net.au"}, "scor":[]string{"whois.nic.scor"}, "scot":[]string{"whois.scot.coreregistry.net"}, "seat":[]string{"whois.nic.seat"}, "seek":[]string{"whois.nic.seek"}, "sexy":[]string{"whois.uniregistry.net"}, "shaw":[]string{"whois.afilias-srs.net"}, "shia":[]string{"whois.agitsys.net"}, "show":[]string{"whois.donuts.co"}, "sina":[]string{"whois.afilias-srs.net"}, "site":[]string{"whois.centralnic.com"}, "skin":[]string{"whois.nic.skin"}, "sncf":[]string{"whois-sncf.nic.fr"}, "sohu":[]string{"whois.gtld.knet.cn"}, "sony":[]string{"whois.nic.sony"}, "star":[]string{"whois.afilias-srs.net"}, "surf":[]string{"whois-dub.mm-registry.com", "whois.nic.surf"}, "taxi":[]string{"whois.donuts.co"}, "team":[]string{"whois.donuts.co"}, "tech":[]string{"whois.nic.tech"}, "teva":[]string{"whois.nic.teva"}, "tiaa":[]string{"whois.nic.tiaa"}, "tips":[]string{"whois.donuts.co"}, "town":[]string{"whois.donuts.co"}, "toys":[]string{"whois.donuts.co"}, "vana":[]string{"whois.nic.vana"}, "visa":[]string{"whois.nic.visa"}, "viva":[]string{"whois.centralnic.com"}, "vote":[]string{"whois.afilias.net"}, "voto":[]string{"whois.afilias.net"}, "wang":[]string{"whois.gtld.knet.cn"}, "wien":[]string{"whois.nic.wien"}, "wiki":[]string{"whois.nic.wiki"}, "wine":[]string{"whois.donuts.co"}, "work":[]string{"whois-dub.mm-registry.com", "whois.nic.work"}, "yoga":[]string{"whois-dub.mm-registry.com", "whois.nic.yoga"}, "zara":[]string{"whois.afilias-srs.net"}, "zone":[]string{"whois.donuts.co"}},
+		suffix: map[string]*server_elt{
+			".com": &server_elt{
+				name: "whois.verisign-grs.com",
+				kind: 1,
+				pattern: regexp.MustCompile("\\QNo match for\\E"),
+			},
+			".int": &server_elt{
+				name: "whois.iana.org",
+				kind: 0,
+				pattern: nil,
+			},
+			".biz": &server_elt{
+				name: "whois.nic.biz",
+				kind: 0,
+				pattern: regexp.MustCompile("\\QNo Data Found\\E"),
+			},
+			".cat": &server_elt{
+				name: "whois.nic.cat",
+				kind: 0,
+				pattern: nil,
+			},
+			".pro": &server_elt{
+				name: "whois.afilias.net",
+				kind: 0,
+				pattern: nil,
+			},
+			".net": &server_elt{
+				name: "whois.verisign-grs.com",
+				kind: 1,
+				pattern: regexp.MustCompile("\\QNo match for\\E"),
+			},
+			".org": &server_elt{
+				name: "whois.pir.org",
+				kind: 0,
+				pattern: regexp.MustCompile("\\QNOT FOUND\\E"),
+			},
+			".edu": &server_elt{
+				name: "whois.educause.edu",
+				kind: 0,
+				pattern: nil,
+			},
+			".gov": &server_elt{
+				name: "whois.dotgov.gov",
+				kind: 0,
+				pattern: nil,
+			},
+			".tel": &server_elt{
+				name: "whois.nic.tel",
+				kind: 0,
+				pattern: nil,
+			},
+			".xxx": &server_elt{
+				name: "whois.registrar.adult",
+				kind: 0,
+				pattern: nil,
+			},
+		},
 	},
 	{
 		length: 3,
-		suffix: map[string][]string{"abc":[]string{"whois.nic.abc"}, "aco":[]string{"whois.afilias-srs.net"}, "ads":[]string{"domain-registry-whois.l.google.com", "whois.nic.google"}, "aeg":[]string{"whois.nic.aeg"}, "afl":[]string{"whois.nic.afl"}, "anz":[]string{"whois.nic.anz"}, "aol":[]string{"whois.nic.aol"}, "app":[]string{"whois.nic.google"}, "art":[]string{"whois.centralnic.com", "whois.nic.art"}, "bar":[]string{"whois.nic.bar"}, "bbc":[]string{"whois.nic.bbc"}, "bbt":[]string{"whois.nic.bbt"}, "bcg":[]string{"whois.afilias-srs.net"}, "bcn":[]string{"whois.nic.bcn"}, "bet":[]string{"whois.afilias.net"}, "bid":[]string{"whois.nic.bid"}, "bio":[]string{"whois.ksregistry.net"}, "biz":[]string{"whois.biz", "whois.nic.biz"}, "bms":[]string{"whois.nic.bms"}, "bmw":[]string{"whois.ksregistry.net"}, "bnl":[]string{"whois.afilias-srs.net"}, "bom":[]string{"whois.gtlds.nic.br"}, "boo":[]string{"domain-registry-whois.l.google.com", "whois.nic.google"}, "buy":[]string{"whois.afilias-srs.net"}, "bzh":[]string{"whois-bzh.nic.fr", "whois.nic.bzh"}, "cab":[]string{"whois.donuts.co"}, "cal":[]string{"domain-registry-whois.l.google.com", "whois.nic.google"}, "cam":[]string{"whois.ksregistry.net"}, "car":[]string{"whois.uniregistry.net"}, "cat":[]string{"whois.cat", "whois.nic.cat"}, "cba":[]string{"whois.nic.cba"}, "cbs":[]string{"whois.afilias-srs.net"}, "ceb":[]string{"whois.afilias-srs.net"}, "ceo":[]string{"whois.nic.ceo"}, "cfa":[]string{"whois.nic.cfa"}, "cfd":[]string{"whois.nic.cfd"}, "com":[]string{"whois.crsnic.net", "whois.verisign-grs.com"}, "csc":[]string{"whois.nic.csc"}, "dad":[]string{"domain-registry-whois.l.google.com", "whois.nic.google"}, "day":[]string{"domain-registry-whois.l.google.com", "whois.nic.google"}, "dds":[]string{"whois-dub.mm-registry.com", "whois.nic.dds"}, "dev":[]string{"domain-registry-whois.l.google.com", "whois.nic.google"}, "diy":[]string{"whois.nic.diy"}, "dog":[]string{"whois.donuts.co"}, "dot":[]string{"whois.afilias-srs.net"}, "dtv":[]string{"whois.afilias-srs.net"}, "dvr":[]string{"whois.afilias-srs.net"}, "eat":[]string{"domain-registry-whois.l.google.com", "whois.nic.google"}, "eco":[]string{"whois.afilias-srs.net"}, "edu":[]string{"whois.educause.edu", "whois.internic.net"}, "esq":[]string{"domain-registry-whois.l.google.com", "whois.nic.google"}, "eus":[]string{"whois.eus.coreregistry.net"}, "fan":[]string{"whois.nic.fan"}, "fit":[]string{"whois-dub.mm-registry.com", "whois.nic.fit"}, "fly":[]string{"domain-registry-whois.l.google.com", "whois.nic.google"}, "foo":[]string{"domain-registry-whois.l.google.com", "whois.nic.google"}, "frl":[]string{"whois.nic.frl"}, "fyi":[]string{"whois.donuts.co"}, "gal":[]string{"whois.gal.coreregistry.net"}, "gdn":[]string{"whois.nic.gdn"}, "gea":[]string{"whois.afilias-srs.net"}, "gle":[]string{"domain-registry-whois.l.google.com", "whois.nic.google"}, "gmx":[]string{"whois-fe1.gmx.tango.knipp.de"}, "goo":[]string{"whois.nic.gmo"}, "gop":[]string{"whois-cl01.mm-registry.com", "whois.nic.gop"}, "gov":[]string{"whois.dotgov.gov", "whois.nic.gov"}, "hiv":[]string{"whois.afilias-srs.net", "whois.uniregistry.net"}, "hkt":[]string{"whois.afilias-srs.net"}, "how":[]string{"domain-registry-whois.l.google.com", "whois.nic.google"}, "ibm":[]string{"whois.nic.ibm"}, "ice":[]string{"whois.nic.ice"}, "icu":[]string{"whois.nic.icu"}, "ifm":[]string{"whois.nic.ifm"}, "ing":[]string{"domain-registry-whois.l.google.com", "whois.nic.google"}, "ink":[]string{"whois.centralnic.com", "whois.donuts.co", "whois.nic.ink"}, "int":[]string{"whois.iana.org"}, "ist":[]string{"whois.afilias-srs.net"}, "itv":[]string{"whois.afilias-srs.net"}, "jcb":[]string{"whois.nic.gmo"}, "jcp":[]string{"whois.afilias-srs.net"}, "jll":[]string{"whois.afilias-srs.net"}, "kfh":[]string{"whois.nic.kfh"}, "kia":[]string{"whois.nic.kia"}, "kim":[]string{"whois.afilias.net"}, "krd":[]string{"whois.aridnrs.net.au"}, "lat":[]string{"whois.nic.lat"}, "law":[]string{"whois-dub.mm-registry.com"}, "lds":[]string{"whois.afilias-srs.net"}, "lol":[]string{"whois.uniregistry.net"}, "lpl":[]string{"whois.nic.lpl"}, "ltd":[]string{"whois.donuts.co"}, "man":[]string{"whois.nic.man"}, "mba":[]string{"whois.donuts.co"}, "med":[]string{"whois.nic.med"}, "men":[]string{"whois.nic.men"}, "mil":[]string{"whois.internic.net"}, "mit":[]string{"whois.afilias-srs.net"}, "mls":[]string{"whois.nic.mls"}, "mma":[]string{"whois-mma.nic.fr"}, "moe":[]string{"whois.nic.moe"}, "mom":[]string{"whois.uniregistry.net"}, "mov":[]string{"domain-registry-whois.l.google.com", "whois.nic.google"}, "mtn":[]string{"whois.nic.mtn"}, "mtr":[]string{"whois.nic.mtr"}, "nab":[]string{"whois.nic.nab"}, "nec":[]string{"whois.nic.nec"}, "net":[]string{"whois.crsnic.net", "whois.verisign-grs.com"}, "new":[]string{"domain-registry-whois.l.google.com", "whois.nic.google"}, "ngo":[]string{"whois.publicinterestregistry.net"}, "nra":[]string{"whois.afilias-srs.net"}, "nrw":[]string{"whois.nic.nrw"}, "nyc":[]string{"whois.nic.nyc"}, "obi":[]string{"whois.nic.obi"}, "off":[]string{"whois.nic.off"}, "one":[]string{"whois.nic.one"}, "ong":[]string{"whois.publicinterestregistry.net"}, "onl":[]string{"whois.afilias-srs.net"}, "ooo":[]string{"whois.nic.ooo"}, "org":[]string{"whois.pir.org", "whois.publicinterestregistry.net"}, "ott":[]string{"whois.afilias-srs.net"}, "ovh":[]string{"whois-ovh.nic.fr"}, "pet":[]string{"whois.afilias.net"}, "pid":[]string{"whois.nic.pid"}, "pnc":[]string{"whois.afilias-srs.net"}, "pro":[]string{"whois.afilias.net", "whois.internic.net", "whois.registrypro.pro"}, "pub":[]string{"whois.unitedtld.com"}, "pwc":[]string{"whois.afilias-srs.net"}, "red":[]string{"whois.afilias.net"}, "rio":[]string{"whois.gtlds.nic.br"}, "rip":[]string{"whois.rightside.co"}, "run":[]string{"whois.donuts.co"}, "rwe":[]string{"whois.nic.rwe"}, "sap":[]string{"whois.nic.sap"}, "sbi":[]string{"whois.afilias-srs.net"}, "sbs":[]string{"whois.nic.sbs"}, "sca":[]string{"whois.nic.sca"}, "scb":[]string{"whois.nic.scb"}, "ses":[]string{"whois.nic.ses"}, "sew":[]string{"whois.afilias-srs.net"}, "sex":[]string{"whois.afilias-srs.net"}, "sfr":[]string{"whois.nic.sfr"}, "ski":[]string{"whois.ksregistry.net"}, "sky":[]string{"whois.nic.sky"}, "soy":[]string{"domain-registry-whois.l.google.com", "whois.nic.google"}, "srl":[]string{"whois.afilias-srs.net"}, "srt":[]string{"whois.afilias-srs.net"}, "stc":[]string{"whois.centralnic.com"}, "tab":[]string{"whois.nic.tab"}, "tax":[]string{"whois.donuts.co"}, "tci":[]string{"whois.agitsys.net"}, "tdk":[]string{"whois.nic.tdk"}, "tel":[]string{"whois.nic.tel"}, "thd":[]string{"whois.afilias-srs.net"}, "top":[]string{"whois.nic.top"}, "trv":[]string{"whois.afilias-srs.net"}, "tui":[]string{"whois.ksregistry.net"}, "tvs":[]string{"whois.afilias-srs.net"}, "ubs":[]string{"whois.nic.ubs"}, "uno":[]string{"whois.nic.uno"}, "uol":[]string{"whois.gtlds.nic.br"}, "ups":[]string{"whois.afilias-srs.net"}, "vet":[]string{"whois.rightside.co"}, "vig":[]string{"whois.afilias-srs.net"}, "vin":[]string{"whois.donuts.co"}, "vip":[]string{"whois-dub.mm-registry.com"}, "wed":[]string{"whois.nic.wed"}, "win":[]string{"whois.nic.win"}, "wme":[]string{"whois.centralnic.com", "whois.nic.wme"}, "wtc":[]string{"whois.nic.wtc"}, "wtf":[]string{"whois.donuts.co"}, "xin":[]string{"whois.afilias-srs.net", "whois.nic.xin"}, "xxx":[]string{"whois.nic.xxx"}, "xyz":[]string{"whois.nic.xyz"}, "yun":[]string{"whois.teleinfo.cn"}, "zip":[]string{"domain-registry-whois.l.google.com", "whois.nic.google"}},
-	},
-	{
-		length: 2,
-		suffix: map[string][]string{"ac":[]string{"whois.nic.ac"}, "ad":[]string{"whois.ripe.net"}, "ae":[]string{"whois-check.aeda.net.ae", "whois.aeda.net.ae"}, "af":[]string{"whois.nic.af"}, "ag":[]string{"whois.nic.ag"}, "ai":[]string{"whois.ai"}, "am":[]string{"whois.amnic.net", "whois.nic.am"}, "as":[]string{"whois.nic.as"}, "at":[]string{"whois.nic.at"}, "au":[]string{"whois.audns.net.au"}, "aw":[]string{"whois.nic.aw"}, "be":[]string{"whois.dns.be"}, "bg":[]string{"whois.register.bg"}, "bi":[]string{"whois1.nic.bi"}, "bj":[]string{"whois.nic.bj"}, "bn":[]string{"whois.bnnic.bn"}, "bo":[]string{"whois.nic.bo"}, "br":[]string{"whois.nic.br", "whois.registro.br"}, "bw":[]string{"whois.nic.net.bw"}, "by":[]string{"whois.cctld.by", "whois.ripe.net"}, "bz":[]string{"whois.afilias-grs.info", "whois.afilias-grs.info."}, "ca":[]string{"whois.cira.ca"}, "cc":[]string{"ccwhois.verisign-grs.com", "whois.nic.cc"}, "cd":[]string{"whois.nic.cd"}, "cf":[]string{"whois.dot.cf"}, "ch":[]string{"whois.nic.ch"}, "ci":[]string{"whois.nic.ci"}, "cl":[]string{"whois.nic.cl"}, "cm":[]string{"whois.netcom.cm"}, "cn":[]string{"whois.cnnic.cn", "whois.cnnic.net.cn"}, "co":[]string{"whois.nic.co"}, "cr":[]string{"whois.nic.cr"}, "cx":[]string{"whois.nic.cx"}, "cz":[]string{"whois.nic.cz"}, "de":[]string{"whois.denic.de", "whois.nic.de"}, "dk":[]string{"whois.dk-hostmaster.dk"}, "dm":[]string{"whois.nic.dm"}, "dz":[]string{"whois.nic.dz"}, "ec":[]string{"whois.nic.ec"}, "ee":[]string{"whois.eenet.ee", "whois.tld.ee"}, "es":[]string{"whois.nic.es"}, "eu":[]string{"whois.eu"}, "fi":[]string{"whois.fi", "whois.ficora.fi"}, "fj":[]string{"whois.usp.ac.fj"}, "fm":[]string{"whois.nic.fm"}, "fo":[]string{"whois.nic.fo", "whois.ripe.net"}, "fr":[]string{"whois.nic.fr"}, "gd":[]string{"whois.nic.gd"}, "gg":[]string{"whois.channelisles.net", "whois.gg"}, "gi":[]string{"whois.afilias-grs.info", "whois2.afilias-grs.net"}, "gl":[]string{"whois.nic.gl"}, "gq":[]string{"whois.dominio.gq"}, "gs":[]string{"whois.adamsnames.tc", "whois.nic.gs"}, "gy":[]string{"whois.registry.gy"}, "hk":[]string{"whois.hkirc.hk", "whois.hkirc.net.hk"}, "hm":[]string{"whois.registry.hm"}, "hn":[]string{"whois.nic.hn", "whois2.afilias-grs.net"}, "hr":[]string{"whois.dns.hr"}, "ht":[]string{"whois.nic.ht"}, "hu":[]string{"whois.nic.hu"}, "id":[]string{"whois.pandi.or.id"}, "ie":[]string{"whois.domainregistry.ie"}, "il":[]string{"whois.isoc.org.il"}, "im":[]string{"whois.nic.im"}, "in":[]string{"whois.inregistry.in", "whois.inregistry.net", "whois.registry.in"}, "io":[]string{"whois.nic.io"}, "ir":[]string{"whois.nic.ir"}, "is":[]string{"whois.isnic.is"}, "it":[]string{"whois.nic.it"}, "je":[]string{"whois.channelisles.net", "whois.je"}, "jp":[]string{"whois.jprs.jp", "whois.nic.ad.jp"}, "ke":[]string{"whois.kenic.or.ke"}, "ki":[]string{"whois.nic.ki"}, "kn":[]string{"whois.nic.kn"}, "kr":[]string{"whois.kr", "whois.nic.or.kr"}, "ky":[]string{"whois.kyregistry.ky"}, "kz":[]string{"whois.nic.kz"}, "la":[]string{"whois.nic.la"}, "lc":[]string{"whois.afilias-grs.info", "whois2.afilias-grs.net"}, "li":[]string{"whois.nic.li"}, "lt":[]string{"whois.domreg.lt"}, "lu":[]string{"whois.dns.lu"}, "lv":[]string{"whois.nic.lv", "whois.ripe.net"}, "ly":[]string{"whois.nic.ly"}, "ma":[]string{"whois.iam.net.ma", "whois.registre.ma"}, "md":[]string{"whois.nic.md"}, "me":[]string{"whois.nic.me"}, "mg":[]string{"whois.nic.mg"}, "mk":[]string{"whois.marnet.mk"}, "ml":[]string{"whois.dot.ml"}, "mn":[]string{"whois.afilias-grs.info", "whois.nic.mn"}, "mo":[]string{"whois.monic.mo"}, "ms":[]string{"whois.adamsnames.tc", "whois.nic.ms"}, "mu":[]string{"whois.nic.mu"}, "mx":[]string{"whois.mx", "whois.nic.mx"}, "mz":[]string{"whois.nic.mz"}, "na":[]string{"whois.na-nic.com.na"}, "nc":[]string{"whois.nc"}, "nf":[]string{"whois.nic.nf"}, "ng":[]string{"whois.nic.net.ng"}, "nl":[]string{"whois.domain-registry.nl"}, "no":[]string{"whois.norid.no"}, "nu":[]string{"whois.iis.nu", "whois.nic.nu"}, "nz":[]string{"whois.srs.net.nz"}, "om":[]string{"whois.registry.om"}, "pe":[]string{"kero.yachay.pe"}, "pf":[]string{"whois.registry.pf"}, "pl":[]string{"whois.dns.pl"}, "pm":[]string{"whois.nic.fr", "whois.nic.pm"}, "pr":[]string{"whois.nic.pr"}, "ps":[]string{"whois.pnina.ps"}, "pt":[]string{"whois.dns.pt", "whois.ripe.net"}, "pw":[]string{"whois.nic.pw"}, "qa":[]string{"whois.registry.qa"}, "re":[]string{"whois.nic.fr", "whois.nic.re"}, "ro":[]string{"whois.rotld.ro"}, "rs":[]string{"whois.rnids.rs"}, "ru":[]string{"whois.ripn.net", "whois.tcinet.ru"}, "rw":[]string{"whois.ricta.org.rw"}, "sa":[]string{"whois.nic.net.sa"}, "sb":[]string{"whois.nic.net.sb", "whois.nic.sb"}, "sc":[]string{"whois.afilias-grs.info", "whois2.afilias-grs.net"}, "se":[]string{"whois.iis.se", "whois.nic-se.se", "whois.nic.se"}, "sg":[]string{"whois.nic.net.sg", "whois.sgnic.sg"}, "sh":[]string{"whois.nic.sh"}, "si":[]string{"whois.arnes.si", "whois.register.si"}, "sk":[]string{"whois.sk-nic.sk"}, "sl":[]string{"whois.nic.sl"}, "sm":[]string{"whois.nic.sm"}, "sn":[]string{"whois.nic.sn"}, "so":[]string{"whois.nic.so"}, "st":[]string{"whois.nic.st"}, "su":[]string{"whois.ripn.net", "whois.tcinet.ru"}, "sx":[]string{"whois.sx"}, "sy":[]string{"whois.tld.sy"}, "tc":[]string{"whois.adamsnames.tc", "whois.meridiantld.net", "whois.nic.tc"}, "tf":[]string{"whois.adamsnames.tc", "whois.nic.fr", "whois.nic.tf"}, "tg":[]string{"whois.nic.tg"}, "th":[]string{"whois.thnic.co.th"}, "tk":[]string{"whois.dot.tk"}, "tl":[]string{"whois.nic.tl"}, "tm":[]string{"whois.nic.tm"}, "tn":[]string{"whois.ati.tn"}, "to":[]string{"monarch.tonic.to", "whois.tonic.to"}, "tr":[]string{"whois.nic.tr"}, "tv":[]string{"tvwhois.verisign-grs.com", "whois.nic.tv"}, "tw":[]string{"whois.twnic.net.tw"}, "tz":[]string{"whois.tznic.or.tz"}, "ua":[]string{"whois.ua"}, "ug":[]string{"whois.co.ug"}, "uk":[]string{"whois.nic.uk"}, "us":[]string{"whois.nic.us"}, "uy":[]string{"whois.nic.org.uy"}, "uz":[]string{"whois.cctld.uz"}, "vc":[]string{"whois.adamsnames.tc", "whois.afilias-grs.info", "whois2.afilias-grs.net"}, "ve":[]string{"whois.nic.ve"}, "vg":[]string{"ccwhois.ksregistry.net", "whois.adamsnames.tc", "whois.nic.vg"}, "vu":[]string{"vunic.vu"}, "wf":[]string{"whois.nic.fr", "whois.nic.wf"}, "ws":[]string{"whois.website.ws"}, "yt":[]string{"whois.nic.fr", "whois.nic.yt"}, "zm":[]string{"whois.nic.zm"}},
+		suffix: map[string]*server_elt{
+			".dm": &server_elt{
+				name: "whois.nic.dm",
+				kind: 0,
+				pattern: nil,
+			},
+			".mn": &server_elt{
+				name: "whois.nic.mn",
+				kind: 0,
+				pattern: nil,
+			},
+			".yt": &server_elt{
+				name: "whois.nic.yt",
+				kind: 0,
+				pattern: nil,
+			},
+			".mk": &server_elt{
+				name: "whois.marnet.mk",
+				kind: 0,
+				pattern: nil,
+			},
+			".sn": &server_elt{
+				name: "whois.nic.sn",
+				kind: 0,
+				pattern: nil,
+			},
+			".ve": &server_elt{
+				name: "whois.nic.ve",
+				kind: 0,
+				pattern: nil,
+			},
+			".mz": &server_elt{
+				name: "whois.nic.mz",
+				kind: 0,
+				pattern: nil,
+			},
+			".ro": &server_elt{
+				name: "whois.rotld.ro",
+				kind: 0,
+				pattern: nil,
+			},
+			".rw": &server_elt{
+				name: "whois.ricta.org.rw",
+				kind: 0,
+				pattern: nil,
+			},
+			".sa": &server_elt{
+				name: "whois.nic.net.sa",
+				kind: 0,
+				pattern: nil,
+			},
+			".ai": &server_elt{
+				name: "whois.nic.ai",
+				kind: 0,
+				pattern: nil,
+			},
+			".bo": &server_elt{
+				name: "whois.nic.bo",
+				kind: 0,
+				pattern: nil,
+			},
+			".gl": &server_elt{
+				name: "whois.nic.gl",
+				kind: 0,
+				pattern: nil,
+			},
+			".gq": &server_elt{
+				name: "whois.dominio.gq",
+				kind: 0,
+				pattern: nil,
+			},
+			".sh": &server_elt{
+				name: "whois.nic.sh",
+				kind: 0,
+				pattern: nil,
+			},
+			".so": &server_elt{
+				name: "whois.nic.so",
+				kind: 0,
+				pattern: nil,
+			},
+			".ug": &server_elt{
+				name: "whois.co.ug",
+				kind: 0,
+				pattern: nil,
+			},
+			".ir": &server_elt{
+				name: "whois.nic.ir",
+				kind: 0,
+				pattern: nil,
+			},
+			".nc": &server_elt{
+				name: "whois.nc",
+				kind: 0,
+				pattern: nil,
+			},
+			".om": &server_elt{
+				name: "whois.registry.om",
+				kind: 0,
+				pattern: nil,
+			},
+			".jp": &server_elt{
+				name: "whois.jprs.jp",
+				kind: 0,
+				pattern: nil,
+			},
+			".kz": &server_elt{
+				name: "whois.nic.kz",
+				kind: 0,
+				pattern: nil,
+			},
+			".mr": &server_elt{
+				name: "whois.nic.mr",
+				kind: 0,
+				pattern: nil,
+			},
+			".mw": &server_elt{
+				name: "whois.nic.mw",
+				kind: 0,
+				pattern: nil,
+			},
+			".as": &server_elt{
+				name: "whois.nic.as",
+				kind: 0,
+				pattern: nil,
+			},
+			".bw": &server_elt{
+				name: "whois.nic.net.bw",
+				kind: 0,
+				pattern: nil,
+			},
+			".hn": &server_elt{
+				name: "whois.nic.hn",
+				kind: 0,
+				pattern: nil,
+			},
+			".im": &server_elt{
+				name: "whois.nic.im",
+				kind: 0,
+				pattern: nil,
+			},
+			".pm": &server_elt{
+				name: "whois.nic.pm",
+				kind: 0,
+				pattern: nil,
+			},
+			".sg": &server_elt{
+				name: "whois.sgnic.sg",
+				kind: 0,
+				pattern: nil,
+			},
+			".uz": &server_elt{
+				name: "whois.cctld.uz",
+				kind: 0,
+				pattern: nil,
+			},
+			".sm": &server_elt{
+				name: "whois.nic.sm",
+				kind: 0,
+				pattern: nil,
+			},
+			".io": &server_elt{
+				name: "whois.nic.io",
+				kind: 0,
+				pattern: regexp.MustCompile("\\QNOT FOUND\\E"),
+			},
+			".ls": &server_elt{
+				name: "whois.nic.ls",
+				kind: 0,
+				pattern: nil,
+			},
+			".re": &server_elt{
+				name: "whois.nic.re",
+				kind: 0,
+				pattern: nil,
+			},
+			".sk": &server_elt{
+				name: "whois.sk-nic.sk",
+				kind: 0,
+				pattern: nil,
+			},
+			".ws": &server_elt{
+				name: "whois.website.ws",
+				kind: 0,
+				pattern: nil,
+			},
+			".hk": &server_elt{
+				name: "whois.hkirc.hk",
+				kind: 0,
+				pattern: nil,
+			},
+			".ie": &server_elt{
+				name: "whois.weare.ie",
+				kind: 0,
+				pattern: nil,
+			},
+			".mx": &server_elt{
+				name: "whois.mx",
+				kind: 0,
+				pattern: nil,
+			},
+			".rs": &server_elt{
+				name: "whois.rnids.rs",
+				kind: 0,
+				pattern: nil,
+			},
+			".wf": &server_elt{
+				name: "whois.nic.wf",
+				kind: 0,
+				pattern: nil,
+			},
+			".cm": &server_elt{
+				name: "whois.netcom.cm",
+				kind: 0,
+				pattern: nil,
+			},
+			".gh": &server_elt{
+				name: "whois.nic.gh",
+				kind: 0,
+				pattern: nil,
+			},
+			".mq": &server_elt{
+				name: "whois.mediaserv.net",
+				kind: 0,
+				pattern: nil,
+			},
+			".sb": &server_elt{
+				name: "whois.nic.net.sb",
+				kind: 0,
+				pattern: nil,
+			},
+			".sc": &server_elt{
+				name: "whois2.afilias-grs.net",
+				kind: 0,
+				pattern: nil,
+			},
+			".tc": &server_elt{
+				name: "whois.nic.tc",
+				kind: 0,
+				pattern: nil,
+			},
+			".ch": &server_elt{
+				name: "whois.nic.ch",
+				kind: 0,
+				pattern: nil,
+			},
+			".fj": &server_elt{
+				name: "whois.usp.ac.fj",
+				kind: 0,
+				pattern: nil,
+			},
+			".ky": &server_elt{
+				name: "whois.kyregistry.ky",
+				kind: 0,
+				pattern: nil,
+			},
+			".my": &server_elt{
+				name: "whois.mynic.my",
+				kind: 0,
+				pattern: nil,
+			},
+			".ki": &server_elt{
+				name: "whois.nic.ki",
+				kind: 0,
+				pattern: nil,
+			},
+			".am": &server_elt{
+				name: "whois.amnic.net",
+				kind: 0,
+				pattern: nil,
+			},
+			".hm": &server_elt{
+				name: "whois.registry.hm",
+				kind: 0,
+				pattern: nil,
+			},
+			".lt": &server_elt{
+				name: "whois.domreg.lt",
+				kind: 0,
+				pattern: nil,
+			},
+			".nu": &server_elt{
+				name: "whois.iis.nu",
+				kind: 0,
+				pattern: nil,
+			},
+			".fi": &server_elt{
+				name: "whois.fi",
+				kind: 0,
+				pattern: nil,
+			},
+			".ge": &server_elt{
+				name: "whois.nic.ge",
+				kind: 0,
+				pattern: nil,
+			},
+			".hu": &server_elt{
+				name: "whois.nic.hu",
+				kind: 0,
+				pattern: nil,
+			},
+			".ke": &server_elt{
+				name: "whois.kenic.or.ke",
+				kind: 0,
+				pattern: nil,
+			},
+			".bh": &server_elt{
+				name: "whois.nic.bh",
+				kind: 0,
+				pattern: nil,
+			},
+			".cr": &server_elt{
+				name: "whois.nic.cr",
+				kind: 0,
+				pattern: nil,
+			},
+			".dz": &server_elt{
+				name: "whois.nic.dz",
+				kind: 0,
+				pattern: nil,
+			},
+			".ec": &server_elt{
+				name: "whois.nic.ec",
+				kind: 0,
+				pattern: nil,
+			},
+			".mm": &server_elt{
+				name: "whois.registry.gov.mm",
+				kind: 0,
+				pattern: nil,
+			},
+			".vc": &server_elt{
+				name: "whois2.afilias-grs.net",
+				kind: 0,
+				pattern: nil,
+			},
+			".sy": &server_elt{
+				name: "whois.tld.sy",
+				kind: 0,
+				pattern: nil,
+			},
+			".ht": &server_elt{
+				name: "whois.nic.ht",
+				kind: 0,
+				pattern: nil,
+			},
+			".la": &server_elt{
+				name: "whois.nic.la",
+				kind: 0,
+				pattern: nil,
+			},
+			".lc": &server_elt{
+				name: "whois2.afilias-grs.net",
+				kind: 0,
+				pattern: nil,
+			},
+			".lk": &server_elt{
+				name: "whois.nic.lk",
+				kind: 0,
+				pattern: nil,
+			},
+			".md": &server_elt{
+				name: "whois.nic.md",
+				kind: 0,
+				pattern: nil,
+			},
+			".su": &server_elt{
+				name: "whois.tcinet.ru",
+				kind: 0,
+				pattern: nil,
+			},
+			".tf": &server_elt{
+				name: "whois.nic.tf",
+				kind: 0,
+				pattern: nil,
+			},
+			".th": &server_elt{
+				name: "whois.thnic.co.th",
+				kind: 0,
+				pattern: nil,
+			},
+			".co": &server_elt{
+				name: "whois.nic.co",
+				kind: 0,
+				pattern: nil,
+			},
+			".is": &server_elt{
+				name: "whois.isnic.is",
+				kind: 0,
+				pattern: nil,
+			},
+			".it": &server_elt{
+				name: "whois.nic.it",
+				kind: 0,
+				pattern: nil,
+			},
+			".lu": &server_elt{
+				name: "whois.dns.lu",
+				kind: 0,
+				pattern: nil,
+			},
+			".pw": &server_elt{
+				name: "whois.nic.pw",
+				kind: 0,
+				pattern: nil,
+			},
+			".se": &server_elt{
+				name: "whois.iis.se",
+				kind: 0,
+				pattern: nil,
+			},
+			".tk": &server_elt{
+				name: "whois.dot.tk",
+				kind: 0,
+				pattern: nil,
+			},
+			".tn": &server_elt{
+				name: "whois.ati.tn",
+				kind: 0,
+				pattern: nil,
+			},
+			".aw": &server_elt{
+				name: "whois.nic.aw",
+				kind: 0,
+				pattern: nil,
+			},
+			".cc": &server_elt{
+				name: "ccwhois.verisign-grs.com",
+				kind: 1,
+				pattern: nil,
+			},
+			".gg": &server_elt{
+				name: "whois.gg",
+				kind: 0,
+				pattern: nil,
+			},
+			".gy": &server_elt{
+				name: "whois.registry.gy",
+				kind: 0,
+				pattern: nil,
+			},
+			".ua": &server_elt{
+				name: "whois.ua",
+				kind: 0,
+				pattern: nil,
+			},
+			".vu": &server_elt{
+				name: "whois.dnrs.neustar",
+				kind: 0,
+				pattern: nil,
+			},
+			".kr": &server_elt{
+				name: "whois.kr",
+				kind: 0,
+				pattern: nil,
+			},
+			".ml": &server_elt{
+				name: "whois.dot.ml",
+				kind: 0,
+				pattern: nil,
+			},
+			".mu": &server_elt{
+				name: "whois.nic.mu",
+				kind: 0,
+				pattern: nil,
+			},
+			".nz": &server_elt{
+				name: "whois.srs.net.nz",
+				kind: 0,
+				pattern: nil,
+			},
+			".tm": &server_elt{
+				name: "whois.nic.tm",
+				kind: 0,
+				pattern: nil,
+			},
+			".tw": &server_elt{
+				name: "whois.twnic.net.tw",
+				kind: 0,
+				pattern: nil,
+			},
+			".by": &server_elt{
+				name: "whois.cctld.by",
+				kind: 0,
+				pattern: nil,
+			},
+			".ee": &server_elt{
+				name: "whois.tld.ee",
+				kind: 0,
+				pattern: nil,
+			},
+			".fr": &server_elt{
+				name: "whois.nic.fr",
+				kind: 0,
+				pattern: regexp.MustCompile("\\QNo entries found\\E"),
+			},
+			".id": &server_elt{
+				name: "whois.id",
+				kind: 0,
+				pattern: nil,
+			},
+			".nl": &server_elt{
+				name: "whois.domain-registry.nl",
+				kind: 0,
+				pattern: nil,
+			},
+			".tl": &server_elt{
+				name: "whois.nic.tl",
+				kind: 0,
+				pattern: nil,
+			},
+			".vg": &server_elt{
+				name: "whois.nic.vg",
+				kind: 0,
+				pattern: nil,
+			},
+			".cx": &server_elt{
+				name: "whois.nic.cx",
+				kind: 0,
+				pattern: nil,
+			},
+			".gf": &server_elt{
+				name: "whois.mediaserv.net",
+				kind: 0,
+				pattern: nil,
+			},
+			".in": &server_elt{
+				name: "whois.registry.in",
+				kind: 0,
+				pattern: nil,
+			},
+			".ly": &server_elt{
+				name: "whois.nic.ly",
+				kind: 0,
+				pattern: nil,
+			},
+			".ac": &server_elt{
+				name: "whois.nic.ac",
+				kind: 0,
+				pattern: nil,
+			},
+			".gd": &server_elt{
+				name: "whois.nic.gd",
+				kind: 0,
+				pattern: nil,
+			},
+			".pe": &server_elt{
+				name: "kero.yachay.pe",
+				kind: 0,
+				pattern: nil,
+			},
+			".zm": &server_elt{
+				name: "whois.zicta.zm",
+				kind: 0,
+				pattern: nil,
+			},
+			".st": &server_elt{
+				name: "whois.nic.st",
+				kind: 0,
+				pattern: nil,
+			},
+			".ax": &server_elt{
+				name: "whois.ax",
+				kind: 0,
+				pattern: nil,
+			},
+			".bn": &server_elt{
+				name: "whois.bnnic.bn",
+				kind: 0,
+				pattern: nil,
+			},
+			".gi": &server_elt{
+				name: "whois2.afilias-grs.net",
+				kind: 0,
+				pattern: nil,
+			},
+			".lv": &server_elt{
+				name: "whois.nic.lv",
+				kind: 0,
+				pattern: nil,
+			},
+			".ps": &server_elt{
+				name: "whois.pnina.ps",
+				kind: 0,
+				pattern: nil,
+			},
+			".bz": &server_elt{
+				name: "AFILIAS",
+				kind: 0,
+				pattern: nil,
+			},
+			".fm": &server_elt{
+				name: "whois.nic.fm",
+				kind: 0,
+				pattern: nil,
+			},
+			".fo": &server_elt{
+				name: "whois.nic.fo",
+				kind: 0,
+				pattern: nil,
+			},
+			".ng": &server_elt{
+				name: "whois.nic.net.ng",
+				kind: 0,
+				pattern: nil,
+			},
+			".na": &server_elt{
+				name: "whois.na-nic.com.na",
+				kind: 0,
+				pattern: nil,
+			},
+			".uy": &server_elt{
+				name: "whois.nic.org.uy",
+				kind: 0,
+				pattern: nil,
+			},
+			".bm": &server_elt{
+				name: "whois.afilias-srs.net",
+				kind: 0,
+				pattern: nil,
+			},
+			".cl": &server_elt{
+				name: "whois.nic.cl",
+				kind: 0,
+				pattern: nil,
+			},
+			".hr": &server_elt{
+				name: "whois.dns.hr",
+				kind: 0,
+				pattern: nil,
+			},
+			".je": &server_elt{
+				name: "whois.je",
+				kind: 0,
+				pattern: nil,
+			},
+			".sl": &server_elt{
+				name: "whois.nic.sl",
+				kind: 0,
+				pattern: nil,
+			},
+			".us": &server_elt{
+				name: "whois.nic.us",
+				kind: 0,
+				pattern: nil,
+			},
+			".af": &server_elt{
+				name: "whois.nic.af",
+				kind: 0,
+				pattern: nil,
+			},
+			".eu": &server_elt{
+				name: "whois.eu",
+				kind: 0,
+				pattern: nil,
+			},
+			".ma": &server_elt{
+				name: "whois.registre.ma",
+				kind: 0,
+				pattern: nil,
+			},
+			".mg": &server_elt{
+				name: "whois.nic.mg",
+				kind: 0,
+				pattern: nil,
+			},
+			".pt": &server_elt{
+				name: "whois.dns.pt",
+				kind: 0,
+				pattern: nil,
+			},
+			".sx": &server_elt{
+				name: "whois.sx",
+				kind: 0,
+				pattern: nil,
+			},
+			".uk": &server_elt{
+				name: "whois.nic.uk",
+				kind: 0,
+				pattern: nil,
+			},
+			".ag": &server_elt{
+				name: "whois.nic.ag",
+				kind: 0,
+				pattern: nil,
+			},
+			".ar": &server_elt{
+				name: "whois.nic.ar",
+				kind: 0,
+				pattern: nil,
+			},
+			".iq": &server_elt{
+				name: "whois.cmc.iq",
+				kind: 0,
+				pattern: nil,
+			},
+			".nf": &server_elt{
+				name: "whois.nic.nf",
+				kind: 0,
+				pattern: nil,
+			},
+			".gs": &server_elt{
+				name: "whois.nic.gs",
+				kind: 0,
+				pattern: nil,
+			},
+			".kn": &server_elt{
+				name: "whois.nic.kn",
+				kind: 0,
+				pattern: nil,
+			},
+			".tz": &server_elt{
+				name: "whois.tznic.or.tz",
+				kind: 0,
+				pattern: nil,
+			},
+			".ci": &server_elt{
+				name: "whois.nic.ci",
+				kind: 0,
+				pattern: nil,
+			},
+			".de": &server_elt{
+				name: "whois.denic.de",
+				kind: 0,
+				pattern: nil,
+			},
+			".td": &server_elt{
+				name: "whois.nic.td",
+				kind: 0,
+				pattern: nil,
+			},
+			".tg": &server_elt{
+				name: "whois.nic.tg",
+				kind: 0,
+				pattern: nil,
+			},
+			".ae": &server_elt{
+				name: "whois.aeda.net.ae",
+				kind: 0,
+				pattern: nil,
+			},
+			".at": &server_elt{
+				name: "whois.nic.at",
+				kind: 0,
+				pattern: nil,
+			},
+			".bj": &server_elt{
+				name: "whois.nic.bj",
+				kind: 0,
+				pattern: nil,
+			},
+			".ca": &server_elt{
+				name: "whois.cira.ca",
+				kind: 0,
+				pattern: nil,
+			},
+			".me": &server_elt{
+				name: "whois.nic.me",
+				kind: 0,
+				pattern: nil,
+			},
+			".ms": &server_elt{
+				name: "whois.nic.ms",
+				kind: 0,
+				pattern: nil,
+			},
+			".si": &server_elt{
+				name: "whois.register.si",
+				kind: 0,
+				pattern: nil,
+			},
+			".cn": &server_elt{
+				name: "whois.cnnic.cn",
+				kind: 0,
+				pattern: nil,
+			},
+			".tv": &server_elt{
+				name: "tvwhois.verisign-grs.com",
+				kind: 1,
+				pattern: nil,
+			},
+			".kw": &server_elt{
+				name: "whois.nic.kw",
+				kind: 0,
+				pattern: nil,
+			},
+			".pf": &server_elt{
+				name: "whois.registry.pf",
+				kind: 0,
+				pattern: nil,
+			},
+			".qa": &server_elt{
+				name: "whois.registry.qa",
+				kind: 0,
+				pattern: nil,
+			},
+			".ru": &server_elt{
+				name: "whois.tcinet.ru",
+				kind: 0,
+				pattern: nil,
+			},
+			".br": &server_elt{
+				name: "whois.registro.br",
+				kind: 0,
+				pattern: nil,
+			},
+			".cz": &server_elt{
+				name: "whois.nic.cz",
+				kind: 0,
+				pattern: nil,
+			},
+			".dk": &server_elt{
+				name: "whois.dk-hostmaster.dk",
+				kind: 0,
+				pattern: nil,
+			},
+			".kg": &server_elt{
+				name: "whois.kg",
+				kind: 0,
+				pattern: nil,
+			},
+			".to": &server_elt{
+				name: "whois.tonic.to",
+				kind: 0,
+				pattern: nil,
+			},
+			".il": &server_elt{
+				name: "whois.isoc.org.il",
+				kind: 0,
+				pattern: nil,
+			},
+			".au": &server_elt{
+				name: "whois.auda.org.au",
+				kind: 0,
+				pattern: nil,
+			},
+			".bi": &server_elt{
+				name: "whois1.nic.bi",
+				kind: 0,
+				pattern: nil,
+			},
+			".do": &server_elt{
+				name: "whois.nic.do",
+				kind: 0,
+				pattern: nil,
+			},
+			".gp": &server_elt{
+				name: "whois.nic.gp",
+				kind: 0,
+				pattern: nil,
+			},
+			".pl": &server_elt{
+				name: "whois.dns.pl",
+				kind: 0,
+				pattern: nil,
+			},
+			".pr": &server_elt{
+				name: "whois.afilias-srs.net",
+				kind: 0,
+				pattern: nil,
+			},
+			".ss": &server_elt{
+				name: "whois.nic.ss",
+				kind: 0,
+				pattern: nil,
+			},
+			".tr": &server_elt{
+				name: "whois.nic.tr",
+				kind: 0,
+				pattern: nil,
+			},
+			".be": &server_elt{
+				name: "whois.dns.be",
+				kind: 0,
+				pattern: nil,
+			},
+			".bg": &server_elt{
+				name: "whois.register.bg",
+				kind: 0,
+				pattern: nil,
+			},
+			".li": &server_elt{
+				name: "whois.nic.li",
+				kind: 0,
+				pattern: nil,
+			},
+			".no": &server_elt{
+				name: "whois.norid.no",
+				kind: 0,
+				pattern: nil,
+			},
+		},
 	},
 }
