@@ -135,6 +135,13 @@ func main() {
 		base[len(domain)].Pfx[domain] = s
 	}
 
+	/* Add specific entries */
+	base[len(".solutions")].Pfx[".solutions"] = &Srv{
+		Name: "whois.nic.solutions",
+		Kind: 0,
+		Regex: `\QDomain not found\E`,
+	}
+
 	/* generate DB code */
 	fmt.Printf(`package whois
 
