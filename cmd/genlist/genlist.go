@@ -11,6 +11,7 @@ const max_size = 64 /* arbitrary */
 
 type Whois_server struct {
 	Host string `xml:"host,attr"`
+	Pattern string `xml:"availablePattern"`
 }
 
 type Domain struct {
@@ -23,15 +24,20 @@ type Domain_list struct {
 	Domain []Domain `xml:"domain"`
 }
 
+type Srv struct {
+	Name string
+	Regex string
+}
+
 type Base struct {
-	Len int `json:"length"`
-	Pfx map[string][]string `json:""`
+	Len int
+	Pfx map[string][]*Srv
 }
 
 func dec_domain(d Domain) {
 	var dd Domain
 	var f string
-	var list []string
+	var list []*Srv
 	var ws Whois_server
 	var err error
 
@@ -49,7 +55,7 @@ func dec_domain(d Domain) {
 			if ws.Host == "" {
 				continue
 			}
-			list = append(list, ws.Host)
+			list = append(list, &Srv{Name: ws.Host, Regex: ws.Pattern})
 		}
 		if len(list) <= 0 {
 			break
@@ -78,11 +84,14 @@ func main() {
 	var d Domain_list
 	var dd Domain
 	var i int
+	var ss []*Srv
+	var s *Srv
+	var k string
 
 	base = make([]Base, max_size)
 	for i = 0; i < max_size; i++ {
 		base[i].Len = i
-		base[i].Pfx = make(map[string][]string)
+		base[i].Pfx = make(map[string][]*Srv)
 	}
 
 	/* This control has no time control. Press ctrl+c if the time is too long */
@@ -106,11 +115,18 @@ func main() {
 
 	fmt.Printf(`package whois
 
+import "regexp"
+
 /* File genearted with cmd/genlist. Do not edit */
+
+type server_elt struct {
+	name string
+	pattern *regexp.Regexp
+}
 
 type suffix_elt struct {
 	length int
-	suffix map[string][]string
+	suffix map[string][]*server_elt
 }
 var suffix_db []*suffix_elt = []*suffix_elt{
 `)
@@ -119,12 +135,25 @@ var suffix_db []*suffix_elt = []*suffix_elt{
 		if len(base[i].Pfx) == 0 {
 			continue
 		}
-		fmt.Printf(`	{
-		length: %d,
-		suffix: %#v,
-	},
-`, i, base[i].Pfx)
+		fmt.Printf("\t{\n")
+		fmt.Printf("\t\tlength: %d,\n", i)
+		fmt.Printf("\t\tsuffix: map[string][]*server_elt{\n")
+		for k, ss = range base[i].Pfx {
+			fmt.Printf("\t\t\t%#v: []*server_elt{\n", k)
+			for _, s = range ss {
+				fmt.Printf("\t\t\t\t{\n")
+				fmt.Printf("\t\t\t\t\tname: %#v,\n", s.Name)
+				if s.Regex != "" {
+					fmt.Printf("\t\t\t\t\tpattern: regexp.MustCompile(%#v),\n", s.Regex)
+				} else {
+					fmt.Printf("\t\t\t\t\tpattern: nil,\n")
+				}
+				fmt.Printf("\t\t\t\t},\n")
+			}
+			fmt.Printf("\t\t\t},\n")
+		}
+		fmt.Printf("\t\t},\n")
+		fmt.Printf("\t},\n")
 	}
-	fmt.Printf(`}
-`)
+	fmt.Printf("}\n")
 }
