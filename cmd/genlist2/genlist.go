@@ -135,6 +135,7 @@ func main() {
 		base[len(domain)].Pfx[domain] = s
 	}
 
+	/* generate DB code */
 	fmt.Printf(`package whois
 
 import "regexp"
