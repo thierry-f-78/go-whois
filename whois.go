@@ -7,16 +7,23 @@ import "net"
 import "strings"
 import "time"
 
+// Error returned when top level domain is unknown
 var UnidentifiedTLD error = fmt.Errorf("UnidentifiedTLD")
 
+// Just perform a whois on some domain and return content as text.
+// on error, content is empty string and an error is given. If
+// the domain is not found, empty string is returned and error is
+// nil
 func Whois(domain string)(string, error) {
 	return WhoisContext(context.Background(), domain)
 }
 
+// Same than Whois() function, but take context as parameter.
 func WhoisContext(ctx context.Context, domain string)(string, error) {
 	return WhoisContextDialer(ctx, &net.Dialer{}, domain)
 }
 
+// Same than Whois() function, but take context and dialer as parameter.
 func WhoisContextDialer(ctx context.Context, dialer *net.Dialer, domain string)(string, error) {
 	var s *suffix_elt
 	var l int
